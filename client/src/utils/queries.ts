@@ -58,3 +58,17 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+export const QUERY_PRODUCTS = gql`
+  query getProducts {
+    products {
+      _id
+      productName
+      category
+      description
+      price
+      quantity
+      createdAt
+    }
+  }
+`;
