@@ -15,6 +15,16 @@ const typeDefs = `
     comments: [Comment]!
   }
 
+  type Product{
+  _id: ID
+  productName: String
+  category: String
+  description: String
+  price: Float
+  quantity: Int
+  createdAt: String
+  }
+  
   type Comment {
     _id: ID
     commentText: String
@@ -43,6 +53,10 @@ const typeDefs = `
     thoughts: [Thought]!
     thought(thoughtId: ID!): Thought
     me: User
+  }
+    type Query {
+    products: [Product]
+    product(productId: ID!): Product
   }
 
   type Mutation {
