@@ -1,6 +1,7 @@
 // Import `<Link>` component from React Router for internal hyperlinks
 import { Link } from 'react-router-dom';
 
+
 interface Product {
   _id: string;
   productName: string;
@@ -9,6 +10,7 @@ interface Product {
   price: number;
   quantity: number;
   createdAt: string;
+  images: string[];
 
 }
 
@@ -25,11 +27,11 @@ const ProductList: React.FC<ProductListProps> = ({ products, productName }) => {
   }
 
   return (
-    <div>
+    <div >
       <h3>{productName}</h3>
       {products &&
         products.map((product) => (
-          <div key={product._id} className="card mb-3">
+          <div key={product._id} className="card mb-3 ">
             <h4 className="card-header bg-primary text-light p-2 m-0">
               {product.productName} <br />
               <span style={{ fontSize: '1rem' }}>
@@ -38,7 +40,26 @@ const ProductList: React.FC<ProductListProps> = ({ products, productName }) => {
             </h4>
             <div className="card-body bg-light p-2">
               <p>{product.description}</p>
+              <p>Price: {product.price}</p>
+            <p>Quantity: {product.quantity}</p>
+            <div className="product-images">
+              {product.images.map((image, index) => (
+                <img
+                  key={index}
+                  src={image}
+                  alt={`${product.productName} - ${index + 1}`}
+                  style={{
+                    width: '100px',
+                    height: '100px',
+                    margin: '5px',
+
+                  }}
+                />
+              ))}
             </div>
+          
+                        
+          </div>
             {/* Create a link to this product's page to view its comments using `<Link>` component */}
             <Link
               className="btn btn-primary btn-block btn-squared"

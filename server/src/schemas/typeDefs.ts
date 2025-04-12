@@ -23,6 +23,7 @@ const typeDefs = `
   price: Float
   quantity: Int
   createdAt: String
+  images: [String]
   }
   
   type Comment {
