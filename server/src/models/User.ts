@@ -7,6 +7,7 @@ interface IUser extends Document {
   email: string;
   password: string;
   thoughts: Schema.Types.ObjectId[];
+  orders: Schema.Types.ObjectId[];
   isCorrectPassword(password: string): Promise<boolean>;
 }
 
@@ -36,12 +37,21 @@ const userSchema = new Schema<IUser>(
         ref: 'Thought',
       },
     ],
+    orders: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Order',
+      },
+    ],
   },
-  {
+    {
     timestamps: true,
     toJSON: { getters: true },
     toObject: { getters: true },
   }
+ 
+
+
 );
 
 userSchema.pre<IUser>('save', async function (next) {
