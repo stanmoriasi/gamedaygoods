@@ -69,6 +69,7 @@ export const QUERY_PRODUCTS = gql`
       price
       quantity
       createdAt
+      images
     }
   }
 `;
