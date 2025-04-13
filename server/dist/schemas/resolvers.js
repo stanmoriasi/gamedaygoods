@@ -1,4 +1,5 @@
 import { Thought, User } from '../models/index.js';
+import Product from '../models/Product.js';
 import { signToken, AuthenticationError } from '../utils/auth.js';
 const resolvers = {
     Query: {
@@ -13,6 +14,9 @@ const resolvers = {
         },
         thought: async (_parent, { thoughtId }) => {
             return await Thought.findOne({ _id: thoughtId });
+        },
+        products: async () => {
+            return await Product.find();
         },
         // Query to get the authenticated user's information
         // The 'me' query relies on the context to check if the user is authenticated
