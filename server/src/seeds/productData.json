@@ -1,0 +1,38 @@
+[
+    {
+      "productName": "Baseball Bat",
+      "description": "Top of the line baseball bat",
+      "price": 10.99,
+      "category": "Baseball",
+      "quantity": 12
+    },
+    {
+      "productName": "Babolat Tennis Racket",
+      "description": "Pure drive tennis racket",
+      "price": 15.49,
+      "category": "Tennis",
+      "quantity": 19
+    },
+    {
+      "productName": "Soccer Ball",
+      "description": "Nike soccer ball",
+      "price": 7.99,
+      "category": "Soccer",
+      "quantity": 11
+    },
+    {
+      "productName": "Golf Club",
+      "description": "Ping golf club",
+      "price": 20.0,
+      "category": "Golf",
+      "quantity": 15
+    },
+    {
+      "productName": "Wilson Tennis Racket",
+      "description": "Wilson tennis racket",
+      "price": 12.5,
+      "category": "Tennis",
+      "quantity": 10
+    }
+  ]
+
