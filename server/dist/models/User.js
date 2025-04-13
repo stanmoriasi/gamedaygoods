@@ -25,6 +25,12 @@ const userSchema = new Schema({
             ref: 'Thought',
         },
     ],
+    orders: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Order',
+        },
+    ],
 }, {
     timestamps: true,
     toJSON: { getters: true },
