@@ -27,6 +27,11 @@ const typeDefs = `
     createdAt: String!
   }
 
+  input OrderInput {
+    products: [ID!]!
+    
+}
+
    input ProductInput {
     name: String!
     description: String!
@@ -58,7 +63,7 @@ const typeDefs = `
   }
 
   type Mutation {
-    register(input: UserInput!): Auth
+    addUser(input: UserInput!): Auth
     login(email: String!, password: String!): Auth
     addProduct(input: ProductInput!): Product
     updateProduct(productId: ID!, input: ProductInput!): Product
