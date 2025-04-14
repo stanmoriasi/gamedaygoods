@@ -2,6 +2,16 @@
 
 ## Description
 
+We built an e-commerce app where users can buy sporting goods.
+The users can see any sport gear they'd like to purchase, which includes baseball, basketball, American football, soccer, tennis, ice-hockey, and much more. 
+Users are able to see the sports gear available in stock, but in order to buy, they must either sign-up or log-in first.
+
+
+We've improved our coding skills, because we built a solid React structure. Also, we have learned how to make a responsive and polished User Interface by implementing CSS to our website. In the back-end, we were able to protect sensitive API key information, as well as use queries and mutations for retrieving, adding, updating and deleting data. It's important to say that we were able to successfully communicate between the front-end and the back-end through the GraphQL API, and we applied the JSON Web Tokens
+for a secure user authentication. Finally, we used MongoDB and Mongoose ODM for the database.
+Along with this, we acquired knowledge of team collaboration, because when we were working with the Git version control, we had to resolve 
+some merge conflicts when pulling or pushing up code.
+
 Link to the deployed application: 
 
 ## Table of Contents
@@ -22,16 +32,16 @@ Link to the deployed application:
 
 ## Technologies Used
 
-- **Frontend:**
-- **Backend:**
-- **Database:**
-- **Authentication:**
+- **Frontend:** React, CSS.
+- **Backend:** Node.js, Express,js.
+- **Database:** MongoDB, Mongoose ODM.
+- **Authentication:** JWT (JSON Web Tokens)
 
 ## Features
 
--
--
--
+- Sign-up/Log-in users.
+- Search for any sports gear avalaible in stock.
+- Add items to a shopping cart list.
 
 ## Credits
 
