@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import SingleThought from "./pages/SingleThought";
+//delete this option, maybre change to single product
 import Profile from "./pages/Profile";
 import ErrorPage from "./pages/Error";
 

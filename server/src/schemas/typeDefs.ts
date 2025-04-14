@@ -4,16 +4,9 @@ const typeDefs = `
     username: String
     email: String
     password: String
-    thoughts: [Thought]!
+    orders: [Order!]!
   }
 
-  type Thought {
-    _id: ID
-    thoughtText: String
-    thoughtAuthor: String
-    createdAt: String
-    comments: [Comment]!
-  }
 
   type Product{
   _id: ID
@@ -24,17 +17,28 @@ const typeDefs = `
   quantity: Int
   createdAt: String
   images: [String]
+  inStock: Boolean!
   }
   
-  type Comment {
-    _id: ID
-    commentText: String
-    createdAt: String
+  type Order {
+    _id: ID!
+    products: [Product!]!
+    total: Float!
+    createdAt: String!
   }
 
-  input ThoughtInput {
-    thoughtText: String!
-    thoughtAuthor: String!
+  input OrderInput {
+    products: [ID!]!
+    
+}
+
+   input ProductInput {
+    name: String!
+    description: String!
+    price: Float!
+    image: String
+    category: String!
+    inStock: Boolean!
   }
 
   input UserInput {
@@ -48,25 +52,23 @@ const typeDefs = `
     user: User
   }
 
-  type Query {
+    type Query {
+    me: User
     users: [User]
     user(username: String!): User
-    thoughts: [Thought]!
-    thought(thoughtId: ID!): Thought
-    me: User
-  }
-    type Query {
     products: [Product]
     product(productId: ID!): Product
+    orders: [Order!]!
+    order(orderId: ID!): Order
   }
 
   type Mutation {
     addUser(input: UserInput!): Auth
     login(email: String!, password: String!): Auth
-    addThought(input: ThoughtInput!): Thought
-    addComment(thoughtId: ID!, commentText: String!): Thought
-    removeThought(thoughtId: ID!): Thought
-    removeComment(thoughtId: ID!, commentId: ID!): Thought
+    addProduct(input: ProductInput!): Product
+    updateProduct(productId: ID!, input: ProductInput!): Product
+    removeProduct(productId: ID!): Product
+    placeOrder(input: OrderInput!): Order
   }
 `;
 
