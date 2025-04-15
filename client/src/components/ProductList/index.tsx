@@ -46,7 +46,7 @@ const ProductList: React.FC<ProductListProps> = ({ products, productName }) => {
     let itemsToModify = cartItems;
     const itemToAdd = itemsToModify.findIndex((i: cartItem) => i._id === product._id);
 
-    // if(itemsToModify[itemToAdd] && itemsToModify[itemToAdd]?.quantity > product.quantity) {
+    // if(itemToAdd && itemToAdd?.quantity > product.quantity) {
     //   alert(`Only ${product.quantity} items in stock.`);
     //   return null;
     // }
