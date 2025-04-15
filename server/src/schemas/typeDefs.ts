@@ -39,9 +39,16 @@ const typeDefs = `
   type Order {
     _id: ID!
     products: [Product!]!
-    total: Float!
+    total: Float
     createdAt: String!
   }
+
+  type CartItem {
+  _id: ID!
+  name: String!
+  price: Float!
+  quantity: Int!
+}
 
   input OrderInput {
     products: [ID!]!

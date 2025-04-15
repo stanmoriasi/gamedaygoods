@@ -9,6 +9,7 @@ import SingleThought from "./pages/SingleThought";
 //delete this option, maybre change to single product
 import Profile from "./pages/Profile";
 import ErrorPage from "./pages/Error";
+import CartPage from "./pages/CartPage";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "/thoughts/:thoughtId",
         element: <SingleThought />,
+      },
+      {
+        path: "/cart",
+        element: <CartPage />,
       },
     ],
   },

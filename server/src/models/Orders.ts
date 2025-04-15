@@ -16,12 +16,13 @@ const orderSchema = new Schema<IOrder>(
   {
     userId: {
       type: String,
-      required: true,
+      required: false,
     },
     products: [
       {
         productId: {
-          type: String,
+          type: Schema.Types.ObjectId,
+          ref: 'Product',
           required: true,
         },
         quantity: {
@@ -34,14 +35,16 @@ const orderSchema = new Schema<IOrder>(
     amount: {
       type: Number,
       required: true,
+      default: 0,
     },
     address: {
       type: String,
-      required: true,
+      required: false,
     },
     status: {
       type: String,
-      default: 'pending',
+      enum: ['pending', 'shipped', 'delivered', 'cancelled', 'cart'],
+      default: 'cart',
     },
     createdAt: {
       type: Date,
