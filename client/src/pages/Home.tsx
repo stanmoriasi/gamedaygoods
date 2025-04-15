@@ -1,35 +1,31 @@
-import { useQuery } from '@apollo/client';
-import ProductList from '../components/ProductList';
-import { QUERY_PRODUCTS } from '../utils/queries.ts';
-//import ProductList from '../components/ProductList/index.tsx';
+import { useQuery } from "@apollo/client";
+import ProductList from "../components/ProductList";
+import { QUERY_PRODUCTS } from "../utils/queries.ts";
 
 const Home = () => {
   const { loading, data } = useQuery(QUERY_PRODUCTS);
-  
   const products = data?.products || [];
-  console.log("🚀 ~ Home ~ data:", data)
+  console.log("🚀 ~ Home ~ data:", data);
 
   return (
     <main>
-      <div className="flex-row justify-center">
-      {/* <div
-          className="col-12 col-md-10 mb-3 p-3"
-          style={{ border: '1px dotted #1a1a1a' }}
-        >
-          <ProductList
-            products={products}
-            productName="Default Product Name"
-          />
-        </div> */}
-        <div className="col-12 col-md-8 mb-3">
-          {loading ? (
-            <div>Loading...</div>
-          ) : (
-            <ProductList
-              products={products}
-              productName="Available Products"
-            />
-          )}
+      <div className="container">
+        <div className="row justify-content-center">
+          <div className="col-12">
+            {loading ? (
+              <div className="text-center my-5">
+                <div className="spinner-border text-info" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </div>
+                <p className="mt-3">Loading products...</p>
+              </div>
+            ) : (
+              <ProductList
+                products={products}
+                productName="Available Products"
+              />
+            )}
+          </div>
         </div>
       </div>
     </main>

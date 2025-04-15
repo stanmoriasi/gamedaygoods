@@ -1,0 +1,232 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+.product-container {
+  width: 85%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+/* Grid layout */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+/* Product item styling */
+.product-item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Card styling */
+.product-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+  flex: 1 1 auto; /* This allows the card body to expand */
+}
+
+/* Image styling */
+.product-image-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%; /* This creates a square aspect ratio */
+  overflow: hidden;
+  border-radius: 4px 4px 0 0;
+  background-color: #f8f9fa;
+}
+
+.product-main-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 10px;
+}
+
+.product-thumbnails {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.thumbnail-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 2px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.thumbnail-image:hover {
+  border-color: #17a2b8;
+}
+
+/* Text styling */
+.price-tag {
+  font-size: 1.25rem;
+}
+
+.quantity-badge {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.product-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.brand-text {
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Card footer styling */
+.card-footer {
+  background-color: #343a40;
+  padding: 10px;
+  border-top: none;
+}
+
+.card-footer h4 {
+  color: white;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Modal styling for product details */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1050;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  outline: 0;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1040;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+}
+
+.modal-backdrop.fade {
+  opacity: 0.5;
+}
+
+.modal.fade .modal-dialog {
+  transition: transform 0.3s ease-out;
+  transform: translate(0, -50px);
+}
+
+.modal.show .modal-dialog {
+  transform: none;
+}
+
+/* Slider styling */
+.product-slider {
+  width: 100%;
+  height: 100%;
+}
+
+.slider-image-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%; /* Square aspect ratio */
+}
+
+.slider-image-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Override slick-slider default styles */
+.slick-slider {
+  margin-bottom: 0;
+}
+
+.slick-dots {
+  bottom: 5px;
+}
+
+.slick-dots li button:before {
+  color: white;
+  opacity: 0.8;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #17a2b8;
+  opacity: 1;
+}
+
+.slick-prev,
+.slick-next {
+  z-index: 1;
+}
+
+.slick-prev {
+  left: 5px;
+}
+
+.slick-next {
+  right: 5px;
+}
+
+/* Modal slider specific styles */
+.modal-slider .slick-dots {
+  bottom: -25px;
+}
+
+.modal-slider .slick-dots li button:before {
+  color: #343a40;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: minmax(280px, 1fr);
+  }
+
+  .product-container {
+    width: 90%;
+  }
+}
