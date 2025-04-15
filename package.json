@@ -19,7 +19,14 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/react-slick": "^0.23.13",
     "concurrently": "^8.2.2",
     "wait-on": "^7.2.0"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.5",
+    "react-bootstrap": "^2.10.9",
+    "react-slick": "^0.30.3",
+    "slick-carousel": "^1.8.1"
   }
 }

@@ -1,49 +1,68 @@
-import { Link } from 'react-router-dom';
-import { type MouseEvent} from 'react';
-import Auth from '../../utils/auth';
+import { Link } from "react-router-dom";
+import { type MouseEvent } from "react";
+import Auth from "../../utils/auth";
+import "./header.css"; // Make sure the file name matches your actual CSS file
 
 const Header = () => {
   const logout = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    // Logs the user out by calling the logout method from Auth
     Auth.logout();
   };
+
   return (
-    <header className="bg-primary text-light mb-4 py-3 flex-row align-center">
-      <div className="container flex-row justify-space-between-lg justify-center align-center">
-        <div>
-          <Link className="text-light" to="/">
-            <h1 className="m-0">Tech Thoughts</h1>
-          </Link>
-          <p className="m-0">Get into the mind of a programmer.</p>
-        </div>
-        <div>
-          {/* Checking if the user is logged in to conditionally render profile link and logout button */}
-          {Auth.loggedIn() ? (
-            <>
-              <Link className="btn btn-lg btn-info m-2" to="/me">
-                {/* Retrieving the logged-in user's profile to display the username */}
-                {Auth.getProfile().data.username}'s profile
-              </Link>
-              <button className="btn btn-lg btn-light m-2" onClick={logout}>
-                Logout
-              </button>
-              <div className="btn btn-lg btn-light m-2">
-        <Link to="/cart" className=" btn-warning">
-          View Cart
-        </Link>
-      </div>
-            </>
-          ) : (
-            <>
-              <Link className="btn btn-lg btn-info m-2" to="/login">
-                Login
-              </Link>
-              <Link className="btn btn-lg btn-light m-2" to="/signup">
-                Signup
-              </Link>
-            </>
-          )}
+    <header className="bg-dark text-light mb-4 py-3 d-flex align-items-center header-gradient">
+      <div className="container">
+        <div className="row align-items-center">
+          <div className="col-md-6">
+            <Link className="text-light text-decoration-none" to="/">
+              <div className="d-flex align-items-center">
+                <div>
+                  <h1 className="m-0 brand-text">
+                    <span className="text-warning">Game</span>
+                    <span className="text-white">day</span>
+                    <span className="text-info">Goods</span>
+                  </h1>
+                  <p className="m-0 tagline">Shop the latest gear!</p>
+                </div>
+              </div>
+            </Link>
+          </div>
+          <div className="col-md-6 d-flex justify-content-md-end">
+            {Auth.loggedIn() ? (
+              <>
+                <Link className="btn btn-info btn-lg mx-2 nav-button" to="/me">
+                  {Auth.getProfile().data.username}'s profile
+                </Link>
+                <button
+                  className="btn btn-light btn-lg mx-2 nav-button"
+                  onClick={logout}
+                >
+                  Logout
+                </button>
+                <Link
+                  to="/cart"
+                  className="btn btn-warning btn-lg mx-2 nav-button"
+                >
+                  View Cart
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link
+                  className="btn btn-info btn-lg mx-2 nav-button"
+                  to="/login"
+                >
+                  Login
+                </Link>
+                <Link
+                  className="btn btn-light btn-lg mx-2 nav-button"
+                  to="/signup"
+                >
+                  Signup
+                </Link>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </header>
