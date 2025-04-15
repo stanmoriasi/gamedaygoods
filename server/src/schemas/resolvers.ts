@@ -67,16 +67,43 @@ const resolvers = {
       if (!context.user) {
         throw new AuthenticationError('You must be logged in to view the cart.');
       }
-
-      // Find the user's cart (order with status 'cart')
-      const cart = await Orders.findOne({ user: context.user._id, status: 'cart' }).populate('products');
-
+    
+      // Try to find existing cart
+      let cart = await Orders.findOne({
+        userId: context.user._id,
+        status: 'cart',
+      }).populate('products.productId');
+    
+      // If no cart, create one
       if (!cart) {
-        throw new Error('Cart not found.');
+        cart = await Orders.create({
+          userId: context.user._id,
+          products: [],
+          amount: 0,
+          address: '',
+          status: 'cart',
+          createdAt: new Date(),
+        });
+        return cart;
       }
-
+    
+      // Calculate total from populated products
+      let total = 0;
+      if (cart.products && cart.products.length > 0) {
+        for (const item of cart.products) {
+          const product: any = item.productId;
+          const quantity = item.quantity || 1;
+          if (product && product.price != null) {
+            total += product.price * quantity;
+          }
+        }
+      }
+    
+      // Update cart amount and return
+      cart.amount = total;
+      await cart.save();
       return cart;
-    },
+    }
   },
 
   Mutation: {
@@ -104,7 +131,7 @@ const resolvers = {
       const order = await Orders.create({
         user: context.user._id,
         products: products.map((p) => p._id),
-        total,
+        amount: total,
         createdAt: new Date(),
       });
       for (const product of products) {
