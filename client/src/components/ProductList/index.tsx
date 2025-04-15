@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./productList.css";
 import { CategoryName } from "../../types/category";
 
-// Import correct images
+// Import your images here
 import baseballBat1 from "../../assets/products/baseball/baseball-bat-1.webp";
 import baseballBat2 from "../../assets/products/baseball/baseball-bat-2.webp";
 import baseballBat3 from "../../assets/products/baseball/baseball-bat-3.webp";
