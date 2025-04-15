@@ -31,6 +31,7 @@ interface Product {
 
 interface ProductListProps {
   products: Product[];
+  product: Product;
   productName: string;
 }
 
@@ -39,10 +40,23 @@ const ProductList: React.FC<ProductListProps> = ({ products, productName }) => {
   const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
 
   // Cart functionality
-  const handleAddToCart = (productName: string) => {
-    // Logic to add the product to the cart
-    console.log(`${productName} added to cart`);
-    // You might want to implement actual cart functionality here
+  const handleAddToCart = (product: Product) => {
+    const storedItems = localStorage.getItem('cart');
+    let cart = storedItems ? JSON.parse(storedItems) : [];
+    const itemToAdd = cart.findIndex((i: {_id: string}) => i._id === product._id);
+    // if(itemToAdd && itemToAdd?.quantity > product.quantity) {
+    //   alert(`Only ${product.quantity} items in stock.`);
+    //   return null;
+    // }
+
+    if(itemToAdd !== -1) {
+      const quantity = cart[itemToAdd].quantity += 1;
+      cart.splice(itemToAdd, 1, {_id: product._id, quantity, productName: product.productName})
+    } else {
+      cart.push({_id: product._id, quantity: 1, productName: product.productName, price: product.price})
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
   };
 
   // Modal open handler
@@ -145,7 +159,7 @@ const ProductList: React.FC<ProductListProps> = ({ products, productName }) => {
                     <div className="d-flex justify-content-between">
                       <button
                         className="btn btn-success flex-grow-1 me-2"
-                        onClick={() => handleAddToCart(product.productName)}
+                        onClick={() => handleAddToCart(product)}
                         disabled={product.quantity <= 0}
                       >
                         Add to Cart
@@ -249,7 +263,7 @@ const ProductList: React.FC<ProductListProps> = ({ products, productName }) => {
                         <button
                           type="button"
                           className="btn btn-success"
-                          onClick={() => handleAddToCart(product.productName)}
+                          onClick={() => handleAddToCart(product)}
                           disabled={product.quantity <= 0}
                         >
                           Add to Cart
