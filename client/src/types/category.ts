@@ -6,12 +6,4 @@ export interface Category {
 }
 
 // Define possible category names — can add more as needed
-export type CategoryName =
-  | "Apparel"
-  | "Footwear"
-  | "Equipment"
-  | "Accessories"
-  | "Fan Gear"
-  | "Training"
-  | "Recovery"
-  | "Electronics";
+export type CategoryName = "Soccer" | "Tennis" | "Golf" | "Baseball";
