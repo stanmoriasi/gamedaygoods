@@ -63,6 +63,20 @@ const resolvers = {
       }
       throw new AuthenticationError('Could not authenticate user.');
     },
+    cart: async (_parent: any, _args: any, context: any) => {
+      if (!context.user) {
+        throw new AuthenticationError('You must be logged in to view the cart.');
+      }
+
+      // Find the user's cart (order with status 'cart')
+      const cart = await Orders.findOne({ user: context.user._id, status: 'cart' }).populate('products');
+
+      if (!cart) {
+        throw new Error('Cart not found.');
+      }
+
+      return cart;
+    },
   },
 
   Mutation: {
@@ -93,12 +107,16 @@ const resolvers = {
         total,
         createdAt: new Date(),
       });
+      for (const product of products) {
+        product.quantity -= 1; // Decrement the quantity by 1
+        await product.save(); // Save the updated product
+      }
 
       await User.findByIdAndUpdate(context.user._id, {
         $addToSet: { orders: order._id },
       });
 
-      return order.populate('products');
+      return (await order.populate('products'));
     },
   },
 };

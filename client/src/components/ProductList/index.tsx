@@ -1,7 +1,6 @@
 // Import `<Link>` component from React Router for internal hyperlinks
 import { Link } from 'react-router-dom';
 
-
 interface Product {
   _id: string;
   productName: string;
@@ -20,6 +19,19 @@ interface ProductListProps {
     
 }
 
+
+const cartItems: string[] = []; // Initialize cartItems as an empty array
+
+const handleAddToCart = (productName: string) => {
+  // Logic to add the product to the cart
+  //this should go to the cart component
+  cartItems.push(productName);
+  console.log(`${productName} added to cart`);
+  console.log(cartItems); // Log the cartItems array to see its contents
+};
+
+
+ // Log the cartItems array to see its contents
 const ProductList: React.FC<ProductListProps> = ({ products, productName }) => {
   
   if (!products.length) {
@@ -28,6 +40,7 @@ const ProductList: React.FC<ProductListProps> = ({ products, productName }) => {
 
   return (
     <div >
+
       <h3>{productName}</h3>
       {products &&
         products.map((product) => (
@@ -57,7 +70,12 @@ const ProductList: React.FC<ProductListProps> = ({ products, productName }) => {
                 />
               ))}
             </div>
-          
+            <button
+              className="btn btn-success mt-3"
+              onClick={() => handleAddToCart(product.productName)}
+            >
+              Add to Cart
+            </button>
                         
           </div>
             {/* Create a link to this product's page to view its comments using `<Link>` component */}

@@ -28,6 +28,11 @@ const Header = () => {
               <button className="btn btn-lg btn-light m-2" onClick={logout}>
                 Logout
               </button>
+              <div className="btn btn-lg btn-light m-2">
+        <Link to="/cart" className=" btn-warning">
+          View Cart
+        </Link>
+      </div>
             </>
           ) : (
             <>
