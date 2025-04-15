@@ -54,3 +54,17 @@ export const ADD_COMMENT = gql`
     }
   }
 `;
+
+export const ADD_PRODUCT_TO_ORDER = gql`
+  mutation AddProductToOrder($orderId: ID!, $productId: ID!) {
+    addProductToOrder(orderId: $orderId, productId: $productId) {
+      _id
+      products {
+        _id
+        productName
+        price
+      }
+      total
+    }
+  }
+`;

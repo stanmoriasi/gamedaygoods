@@ -73,3 +73,39 @@ export const QUERY_PRODUCTS = gql`
     }
   }
 `;
+
+export const ADD_TO_ORDER = gql`
+  mutation AddProductToOrder($orderId: ID!, $productId: ID!) {
+    addProductToOrder(orderId: $orderId, productId: $productId) {
+      _id
+      user {
+        _id
+        username
+      }
+      products {
+        _id
+        productName
+        price
+      }
+      total
+      createdAt
+    }
+  }
+`;
+
+export const GET_CART = gql`
+  query GetCart {
+    cart {
+      _id
+      products {
+        _id
+        productName
+        price
+        quantity
+      }
+      total
+      status
+      createdAt
+    }
+  }
+`;

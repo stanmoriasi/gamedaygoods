@@ -7,7 +7,23 @@ const typeDefs = `
     orders: [Order!]!
   }
 
-
+    type Thought {
+    _id: ID
+    thoughtText: String
+    thoughtAuthor: String
+    createdAt: String
+    comments: [Comment]!
+  }
+  input ThoughtInput {
+    thoughtText: String!
+    thoughtAuthor: String!
+  }
+  type Comment {
+    _id: ID
+    commentText: String
+    createdAt: String
+  }
+    
   type Product{
   _id: ID
   productName: String
@@ -55,15 +71,18 @@ const typeDefs = `
     product(productId: ID!): Product
     orders: [Order!]!
     order(orderId: ID!): Order
+    cart: Order
   }
 
   type Mutation {
-    register(input: UserInput!): Auth
+    addUser(input: UserInput!): Auth
     login(email: String!, password: String!): Auth
+    addThought(input: ThoughtInput!): Thought
+    addComment(thoughtId: ID!, commentText: String!): Thought
+    removeThought(thoughtId: ID!): Thought
+    removeComment(thoughtId: ID!, commentId: ID!): Thought
+    placeOrder(input: [ID!]!): Order
     addProduct(input: ProductInput!): Product
-    updateProduct(productId: ID!, input: ProductInput!): Product
-    removeProduct(productId: ID!): Product
-    placeOrder(input: OrderInput!): Order
   }
 `;
 
