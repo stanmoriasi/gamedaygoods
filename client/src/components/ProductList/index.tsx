@@ -1,22 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./productList.css";
-
-// Import product images
-import baseballBat1 from "../../assets/products/baseball/baseball-bat-1.webp";
-import baseballBat2 from "../../assets/products/baseball/baseball-bat-2.webp";
-import baseballBat3 from "../../assets/products/baseball/baseball-bat-3.webp";
-import tennisRacket1 from "../../assets/products/tennis/tennis-racket-1.avif";
-import tennisRacket2 from "../../assets/products/tennis/tennis-racket-2.avif";
-import tennisRacket3 from "../../assets/products/tennis/tennis-racket-3.avif";
-import tennisRacket4 from "../../assets/products/tennis/tennis-racket-4.webp";
-import tennisRacket5 from "../../assets/products/tennis/tennis-racket-5.webp";
-import tennisRacket6 from "../../assets/products/tennis/tennis-racket-6.webp";
-import soccerBall1 from "../../assets/products/soccer/soccer-ball-1.webp";
-import soccerBall2 from "../../assets/products/soccer/soccer-ball-2.webp";
-import soccerBall3 from "../../assets/products/soccer/soccer-ball-3.webp";
-import golfClub1 from "../../assets/products/golf/golf-club-1.jpeg";
-import golfClub2 from "../../assets/products/golf/golf-club-2.jpeg";
-import golfClub3 from "../../assets/products/golf/golf-club-3.jpeg";
 
 interface Product {
   _id: string;
@@ -26,9 +9,15 @@ interface Product {
   price: number;
   quantity: number;
   createdAt: string;
-  images?: string[]; // Make images optional
+  images?: string[];
 }
-
+interface cartItem {
+  _id: string, 
+  quantity: number, 
+  productName: string, 
+  price: number,
+  images: string[] | []
+}
 interface ProductListProps {
   products: Product[];
   product: Product;
@@ -38,25 +27,47 @@ interface ProductListProps {
 const ProductList: React.FC<ProductListProps> = ({ products, productName }) => {
   // State to track which product modal is open
   const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
+  const [mappedProducts, setMappedProducts] = useState<(Product & { quantityInCart: number })[]>([])
+  const storedItems = localStorage.getItem('cart');
+  const cart = storedItems ? JSON.parse(storedItems) : [];
+
+  useEffect(() => {
+    const modifiedProducts = products.map((prod) => {
+      const itemInCart = cart.find((item: cartItem)=> item._id === prod._id);
+      return {...prod, quantityInCart: itemInCart?.quantity ? itemInCart?.quantity : 0}
+    });
+    setMappedProducts(modifiedProducts)
+  }, [products])
+
+
 
   // Cart functionality
-  const handleAddToCart = (product: Product) => {
-    const storedItems = localStorage.getItem('cart');
-    let cart = storedItems ? JSON.parse(storedItems) : [];
-    const itemToAdd = cart.findIndex((i: {_id: string}) => i._id === product._id);
-    // if(itemToAdd && itemToAdd?.quantity > product.quantity) {
+  const handleAddToCart = (product: Product, cartItems: cartItem[] , numberOfItems: number) => {
+    let itemsToModify = cartItems;
+    const itemToAdd = itemsToModify.findIndex((i: cartItem) => i._id === product._id);
+
+    // if(itemsToModify[itemToAdd] && itemsToModify[itemToAdd]?.quantity > product.quantity) {
     //   alert(`Only ${product.quantity} items in stock.`);
     //   return null;
     // }
 
     if(itemToAdd !== -1) {
-      const quantity = cart[itemToAdd].quantity += 1;
-      cart.splice(itemToAdd, 1, {_id: product._id, quantity, productName: product.productName})
-    } else {
-      cart.push({_id: product._id, quantity: 1, productName: product.productName, price: product.price})
-    }
+      const quantity = itemsToModify[itemToAdd].quantity + numberOfItems;
 
-    localStorage.setItem('cart', JSON.stringify(cart));
+      if(quantity < 1) {
+        itemsToModify.splice(itemToAdd, 1)
+      } else {
+        itemsToModify.splice(itemToAdd, 1, {_id: product._id, quantity, productName: product.productName,  price: product.price, images: product.images ? product.images : []})
+      }
+    } else {
+      itemsToModify.push({_id: product._id, quantity: 1, productName: product.productName, price: product.price, images: product.images ? product.images : []})
+    }
+  
+    localStorage.setItem('cart', JSON.stringify(itemsToModify));
+  
+    setMappedProducts((prevItems) => {
+        return prevItems.map((i) => i._id === product._id ? {...i, quantityInCart: i.quantityInCart + numberOfItems} : i)
+      })
   };
 
   // Modal open handler
@@ -69,64 +80,6 @@ const ProductList: React.FC<ProductListProps> = ({ products, productName }) => {
     setSelectedProduct(null);
   };
 
-  // Function to get the appropriate image based on product name
-  const getProductImage = (product: Product) => {
-    const name = product.productName.toLowerCase();
-
-    // Match specific product names first
-    if (name.includes("baseball bat")) {
-      return baseballBat1;
-    } else if (name.includes("babolat tennis racket")) {
-      return tennisRacket1;
-    } else if (
-      name.includes("wilson tennis racket") ||
-      name.includes("wilson")
-    ) {
-      return tennisRacket4; // Use image 4 for Wilson tennis racket
-    } else if (name.includes("soccer ball")) {
-      return soccerBall1;
-    } else if (name.includes("golf club")) {
-      return golfClub1;
-    }
-
-    // Then try to match by category
-    if (name.includes("baseball") || name.includes("bat")) {
-      return baseballBat1;
-    } else if (name.includes("tennis") || name.includes("racket")) {
-      return tennisRacket1;
-    } else if (name.includes("soccer") || name.includes("ball")) {
-      return soccerBall1;
-    } else if (name.includes("golf") || name.includes("club")) {
-      return golfClub1;
-    }
-
-    // Default image if no match
-    return baseballBat1;
-  };
-
-  // Function to get additional images for the modal
-  const getAdditionalImages = (product: Product) => {
-    const name = product.productName.toLowerCase();
-
-    // Match specific product names first
-    if (name.includes("wilson tennis racket") || name.includes("wilson")) {
-      return [tennisRacket4, tennisRacket5, tennisRacket6]; // Use images 4, 5, 6 for Wilson
-    }
-
-    // Match by product category
-    if (name.includes("baseball") || name.includes("bat")) {
-      return [baseballBat1, baseballBat2, baseballBat3];
-    } else if (name.includes("tennis") || name.includes("racket")) {
-      return [tennisRacket1, tennisRacket2, tennisRacket3];
-    } else if (name.includes("soccer") || name.includes("ball")) {
-      return [soccerBall1, soccerBall2, soccerBall3];
-    } else if (name.includes("golf") || name.includes("club")) {
-      return [golfClub1, golfClub2, golfClub3];
-    }
-
-    // Default images if no match
-    return [baseballBat1, baseballBat2, baseballBat3];
-  };
 
   if (!products.length) {
     return <h3 className="text-center my-4">No products Yet</h3>;
@@ -139,17 +92,14 @@ const ProductList: React.FC<ProductListProps> = ({ products, productName }) => {
       </h3>
 
       <div className="product-grid">
-        {products &&
-          products.map((product) => {
-            // Get the appropriate image for this product
-            const productImage = getProductImage(product);
-
+        {mappedProducts &&
+          mappedProducts.map((product) => {
             return (
               <div key={product._id} className="product-item">
                 <div className="product-card h-100">
                   <div className="product-image-container">
                     <img
-                      src={productImage}
+                      src={product.images?.[0] ? product.images[0] : "https://cwdaust.com.au/wpress/wp-content/uploads/2015/04/placeholder-store.png"}
                       alt={product.productName}
                       className="product-main-image"
                     />
@@ -157,13 +107,36 @@ const ProductList: React.FC<ProductListProps> = ({ products, productName }) => {
                   <div className="card-footer">
                     <h4 className="brand-text mb-2">{product.productName}</h4>
                     <div className="d-flex justify-content-between">
-                      <button
-                        className="btn btn-success flex-grow-1 me-2"
-                        onClick={() => handleAddToCart(product)}
-                        disabled={product.quantity <= 0}
-                      >
-                        Add to Cart
-                      </button>
+                      {
+                        product?.quantityInCart > 0 ? 
+                        (
+                          <div className="d-flex align-items-center justify-content-center me-3">
+                          <button
+                            className="btn btn-outline-success me-2"
+                            style={{ color: "lightgreen", borderColor: "lightgreen" }}
+                            onClick={() => handleAddToCart(product, cart, -1)}
+                          >
+                            –
+                          </button>
+                          <span className="fw-bold text-light">{product.quantityInCart}</span>
+                          <button
+                            className="btn btn-outline-success ms-2"
+                            style={{ color: "lightgreen", borderColor: "lightgreen" }}
+                            onClick={() => handleAddToCart(product, cart, 1)}
+                          >
+                            +
+                          </button>
+                        </div>
+                         ) : (
+                          <button
+                          className="btn btn-success flex-grow-1 me-2"
+                          onClick={() => handleAddToCart(product,  cart, 1)}
+                          disabled={product.quantity <= 0}
+                        >
+                          Add to Cart
+                        </button>
+                         )
+                      }
                       <button
                         className="btn btn-info text-white flex-grow-1"
                         onClick={() => openModal(product._id)}
@@ -209,12 +182,12 @@ const ProductList: React.FC<ProductListProps> = ({ products, productName }) => {
                         <div className="row">
                           <div className="col-md-6">
                             <img
-                              src={productImage}
+                              src={product.images?.[0] ? product.images[0] : "https://cwdaust.com.au/wpress/wp-content/uploads/2015/04/placeholder-store.png"}
                               alt={product.productName}
                               className="img-fluid rounded mb-3"
                             />
                             <div className="product-thumbnails">
-                              {getAdditionalImages(product).map(
+                              {product.images?.map(
                                 (image, index) => (
                                   <img
                                     key={index}
@@ -260,14 +233,43 @@ const ProductList: React.FC<ProductListProps> = ({ products, productName }) => {
                         >
                           Close
                         </button>
-                        <button
-                          type="button"
-                          className="btn btn-success"
-                          onClick={() => handleAddToCart(product)}
-                          disabled={product.quantity <= 0}
-                        >
-                          Add to Cart
-                        </button>
+                        {
+                          product?.quantityInCart > 0 ? (
+                            <div className="d-flex align-items-center justify-content-center me-3">
+                              <button
+                                className="btn btn-outline-success me-2"
+                                style={{
+                                  color: "green",
+                                  borderColor: "green",
+                                  backgroundColor: "white",
+                                }}
+                                onClick={() => handleAddToCart(product, cart, -1)}
+                                disabled={product.quantity <= 0 || product.quantityInCart <= 0}
+                              >
+                                –
+                              </button>
+                              <span className="fw-bold text-dark">{product.quantityInCart}</span>
+                              <button
+                                className="btn btn-outline-success ms-2"
+                                style={{
+                                  color: "green",
+                                  borderColor: "green",
+                                  backgroundColor: "white",
+                                }}
+                                onClick={() => handleAddToCart(product, cart, 1)}
+                              >
+                                +
+                              </button>
+                            </div>
+                          ) : (
+                            <button
+                              className="btn btn-success flex-grow-1 me-2"
+                              onClick={() => handleAddToCart(product, cart, 1)}
+                            >
+                              Add to Cart
+                            </button>
+                          )
+                        }
                       </div>
                     </div>
                   </div>
