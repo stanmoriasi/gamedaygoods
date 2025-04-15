@@ -3,24 +3,21 @@ import "./productList.css";
 import { CategoryName } from "../../types/category";
 
 // Import your images here
-import baseballBat1 from "../../assets/baseball/baseball-bat1.jpg";
-import baseballBat2 from "../../assets/baseball/baseball-bat2.jpg";
-import baseballBat3 from "../../assets/baseball/baseball-bat3.jpg";
-
-import tennisRacket1 from "../../assets/tennis/tennis-racket1.jpg";
-import tennisRacket2 from "../../assets/tennis/tennis-racket2.jpg";
-import tennisRacket3 from "../../assets/tennis/tennis-racket3.jpg";
-import tennisRacket4 from "../../assets/tennis/wilson-blade1.jpg";
-import tennisRacket5 from "../../assets/tennis/wilson-blade2.jpg";
-import tennisRacket6 from "../../assets/tennis/wilson-blade3.jpg";
-
-import soccerBall1 from "../../assets/soccer/soccer-ball1.jpg";
-import soccerBall2 from "../../assets/soccer/soccer-ball2.jpg";
-import soccerBall3 from "../../assets/soccer/soccer-ball3.jpg";
-
-import golfClub1 from "../../assets/golf/golf-club1.jpg";
-import golfClub2 from "../../assets/golf/golf-club2.jpg";
-import golfClub3 from "../../assets/golf/golf-club3.jpg";
+import baseballBat1 from "../../assets/products/baseball/baseball-bat-1.webp";
+import baseballBat2 from "../../assets/products/baseball/baseball-bat-2.webp";
+import baseballBat3 from "../../assets/products/baseball/baseball-bat-3.webp";
+import tennisRacket1 from "../../assets/products/tennis/tennis-racket-1.avif";
+import tennisRacket2 from "../../assets/products/tennis/tennis-racket-2.avif";
+import tennisRacket3 from "../../assets/products/tennis/tennis-racket-3.avif";
+import tennisRacket4 from "../../assets/products/tennis/tennis-racket-4.webp";
+import tennisRacket5 from "../../assets/products/tennis/tennis-racket-5.webp";
+import tennisRacket6 from "../../assets/products/tennis/tennis-racket-6.webp";
+import soccerBall1 from "../../assets/products/soccer/soccer-ball-1.webp";
+import soccerBall2 from "../../assets/products/soccer/soccer-ball-2.webp";
+import soccerBall3 from "../../assets/products/soccer/soccer-ball-3.webp";
+import golfClub1 from "../../assets/products/golf/golf-club-1.jpeg";
+import golfClub2 from "../../assets/products/golf/golf-club-2.jpeg";
+import golfClub3 from "../../assets/products/golf/golf-club-3.jpeg";
 
 interface Product {
   _id: string;
