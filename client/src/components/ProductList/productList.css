@@ -31,6 +31,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .product-card:hover {
@@ -39,10 +40,10 @@
 }
 
 .card-body {
-  flex: 1 1 auto; /* This allows the card body to expand */
+  flex: 1 1 auto;
 }
 
-/*Styling for product filtering*/
+/* Styling for product filtering */
 .category-filter {
   display: flex;
   justify-content: center;
@@ -58,11 +59,33 @@
   cursor: pointer;
 }
 
+/* Dropdown styling */
+.form-select {
+  padding: 8px 12px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #333;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: #17a2b8;
+  box-shadow: 0 0 0 0.2rem rgba(23, 162, 184, 0.25);
+}
+
+.form-select option {
+  background-color: #fff;
+  color: #333;
+}
+
 /* Image styling */
 .product-image-container {
   position: relative;
   width: 100%;
-  padding-bottom: 100%; /* This creates a square aspect ratio */
+  padding-bottom: 100%;
   overflow: hidden;
   border-radius: 4px 4px 0 0;
   background-color: #f8f9fa;
@@ -76,8 +99,23 @@
   height: 100%;
   object-fit: contain;
   padding: 10px;
+  transition: transform 0.3s ease;
 }
 
+.product-main-image:hover {
+  transform: scale(1.02);
+}
+
+.additional-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* Thumbnails */
 .product-thumbnails {
   display: flex;
   flex-wrap: wrap;
@@ -102,6 +140,7 @@
 /* Text styling */
 .price-tag {
   font-size: 1.25rem;
+  font-weight: bold;
 }
 
 .quantity-badge {
@@ -132,14 +171,19 @@
 
 .card-footer h4 {
   color: white;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   font-size: 1.2rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* Modal styling for product details */
+.card-footer p {
+  color: white;
+  margin: 0;
+}
+
+/* Modal styling */
 .modal {
   position: fixed;
   top: 0;
@@ -172,68 +216,6 @@
 
 .modal.show .modal-dialog {
   transform: none;
-}
-
-/* Slider styling */
-.product-slider {
-  width: 100%;
-  height: 100%;
-}
-
-.slider-image-container {
-  position: relative;
-  width: 100%;
-  padding-bottom: 100%; /* Square aspect ratio */
-}
-
-.slider-image-container img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-/* Override slick-slider default styles */
-.slick-slider {
-  margin-bottom: 0;
-}
-
-.slick-dots {
-  bottom: 5px;
-}
-
-.slick-dots li button:before {
-  color: white;
-  opacity: 0.8;
-}
-
-.slick-dots li.slick-active button:before {
-  color: #17a2b8;
-  opacity: 1;
-}
-
-.slick-prev,
-.slick-next {
-  z-index: 1;
-}
-
-.slick-prev {
-  left: 5px;
-}
-
-.slick-next {
-  right: 5px;
-}
-
-/* Modal slider specific styles */
-.modal-slider .slick-dots {
-  bottom: -25px;
-}
-
-.modal-slider .slick-dots li button:before {
-  color: #343a40;
 }
 
 /* Responsive adjustments */
