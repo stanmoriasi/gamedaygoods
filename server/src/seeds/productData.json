@@ -1,38 +1,86 @@
 [
-    {
-      "productName": "Baseball Bat",
-      "description": "Top of the line baseball bat",
-      "price": 10.99,
-      "category": "Baseball",
-      "quantity": 12
-    },
-    {
-      "productName": "Babolat Tennis Racket",
-      "description": "Pure drive tennis racket",
-      "price": 15.49,
-      "category": "Tennis",
-      "quantity": 19
-    },
-    {
-      "productName": "Soccer Ball",
-      "description": "Nike soccer ball",
-      "price": 7.99,
-      "category": "Soccer",
-      "quantity": 11
-    },
-    {
-      "productName": "Golf Club",
-      "description": "Ping golf club",
-      "price": 20.0,
-      "category": "Golf",
-      "quantity": 15
-    },
-    {
-      "productName": "Wilson Tennis Racket",
-      "description": "Wilson tennis racket",
-      "price": 12.5,
-      "category": "Tennis",
-      "quantity": 10
-    }
-  ]
+  {
+    "productName": "Baseball Bat",
+    "description": "Top of the line baseball bat",
+    "price": 10.99,
+    "category": "Baseball",
+    "quantity": 12,
+    "images": [ 
+      "/public/images/products/baseball/baseball-bat-1.webp",
+      "/public/images/products/baseball/baseball-bat-2.webp",
+      "/public/images/products/baseball/baseball-bat-3.webp"
+    ]
+  },
+  {
+    "productName": "Babolat Tennis Racket",
+    "description": "Pure drive tennis racket",
+    "price": 15.49,
+    "category": "Tennis",
+    "quantity": 19,
+    "images": [ 
+     "/public/images/products/tennis/tennis-racket-1.avif",
+    "/public/images/products/tennis/tennis-racket-2.avif",
+    "/public/images/products/tennis/tennis-racket-3.avif"
+    ]
+  },
+  {
+    "productName": "Soccer Ball",
+    "description": "Nike soccer ball",
+    "price": 7.99,
+    "category": "Soccer",
+    "quantity": 11,
+    "images": [
+    "/public/images/products/soccer/soccer-ball-1.webp",
+    "/public/images/products/soccer/soccer-ball-2.webp",
+    "/public/images/products/soccer/soccer-ball-3.webp"
+    ]
+  },
+  {
+    "productName": "Golf Club",
+    "description": "Ping golf club",
+    "price": 20.0,
+    "category": "Golf",
+    "quantity": 15,
+    "images": [
+    "/public/images/products/golf/golf-club-1.jpeg",
+    "/public/images/products/golf/golf-club-2.jpeg",
+    "/public/images/products/golf/golf-club-3.jpeg"
+    ]
+  },
+  {
+    "productName": "Wilson Tennis Racket",
+    "description": "Wilson tennis racket",
+    "price": 12.5,
+    "category": "Tennis",
+    "quantity": 10,
+    "images": [ 
+    "/public/images/products/tennis/tennis-racket-4.webp",
+    "/public/images/products/tennis/tennis-racket-5.webp",
+    "/public/images/products/tennis/tennis-racket-6.webp"
+    ]
+  },
+  {
+    "productName": "Racket 2",
+    "description": "Wilson tennis racket",
+    "price": 12.5,
+    "category": "Tennis",
+    "quantity": 10,
+    "images": [ 
+    "/public/images/products/tennis/tennis-racket-4.webp",
+    "/public/images/products/tennis/tennis-racket-5.webp",
+    "/public/images/products/tennis/tennis-racket-6.webp"
+    ]
+  },
+  {
+    "productName": "Nike Shoes",
+    "description": "Wilson tennis racket",
+    "price": 12.5,
+    "category": "Tennis",
+    "quantity": 10,
+    "images": [ 
+      
+    "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/beca3db9-a469-4bc1-bbf5-14a846e90db6/AIR+MAX+DN8.png"
+    ]
+  }
 
+]
