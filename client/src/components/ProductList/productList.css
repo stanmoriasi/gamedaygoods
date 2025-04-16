@@ -158,7 +158,6 @@
   font-family: "Bebas Neue", sans-serif;
   letter-spacing: 1px;
   text-transform: uppercase;
-  padding-left: 10px; /* Add this line */
 }
 
 .brand-text:hover {
@@ -168,9 +167,12 @@
   cursor: default;
 }
 
+.text-info:hover .brand-text:hover {
+  transform: none !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
 .product-card:hover .brand-text:hover {
-  /* Remove card hover effect when hovering brand text */
-  /* Reset transform and box-shadow */
   transform: none !important;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
 }

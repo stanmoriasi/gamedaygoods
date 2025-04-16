@@ -20,7 +20,7 @@ interface cartItem {
 }
 interface ProductListProps {
   products: Product[];
-  product: Product;
+  product?: Product;
   productName: string;
 }
 
@@ -108,7 +108,7 @@ const ProductList: React.FC<ProductListProps> = ({ products, productName }) => {
   return (
     <div className="product-container">
       <h3 className="text-center mb-4 brand-text">
-        <span className="text-info">{productName}</span>
+        <span className="text-info">Available Products</span>
       </h3>
 
       {/* Category Filter */}
