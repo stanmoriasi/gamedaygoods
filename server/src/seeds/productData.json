@@ -1,86 +1,99 @@
 [
   {
-    "productName": "Baseball Bat",
-    "description": "Top of the line baseball bat",
-    "price": 10.99,
+    "productName": "Victus Pencil Bat",
+    "description": "One-piece aluminum design offers a clean, consistent, traditional swing feel",
+    "price": 149.99,
     "category": "Baseball",
     "quantity": 12,
-    "images": [ 
-      "/public/images/products/baseball/baseball-bat-1.webp",
-      "/public/images/products/baseball/baseball-bat-2.webp",
-      "/public/images/products/baseball/baseball-bat-3.webp"
+    "images": [
+      "https://dks.scene7.com/is/image/GolfGalaxy/24AQ9BPNCL10258SXKBT?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain",
+      "https://dks.scene7.com/is/image/GolfGalaxy/VibePencil_1%20copy_LFS?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain",
+      "https://dks.scene7.com/is/image/GolfGalaxy/VibePencil_5%20copy_LFS?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain"
     ]
   },
   {
-    "productName": "Babolat Tennis Racket",
-    "description": "Pure drive tennis racket",
-    "price": 15.49,
+    "productName": "Rawlings GG Elite Series Glove",
+    "description": "Top-Grade Leather: Premium leather shell boasts superior durability for long-lasting performance",
+    "price": 179.99,
+    "category": "Baseball",
+    "quantity": 5,
+    "images": [
+      "https://dks.scene7.com/is/image/GolfGalaxy/22RAWAGG1275CMLRHFPG_Camel?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain",
+      "https://dks.scene7.com/is/image/GolfGalaxy/DICGGE1275HC_NOCOLOR_BCK?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain",
+      "https://dks.scene7.com/is/image/GolfGalaxy/DICGGE1275HC_NOCOLOR_PALM?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain"
+    ]
+  },
+  {
+    "productName": "Babolat Rafael Nadal Junior Tennis Racquet",
+    "description": "Aluminium build offers beginners the perfect amount of power and maneuverability to hit their first tennis balls",
+    "price": 44.0,
     "category": "Tennis",
     "quantity": 19,
-    "images": [ 
-     "/public/images/products/tennis/tennis-racket-1.avif",
-    "/public/images/products/tennis/tennis-racket-2.avif",
-    "/public/images/products/tennis/tennis-racket-3.avif"
+    "images": [
+      "https://dks.scene7.com/is/image/GolfGalaxy/21BABYRFNDLJR23XXTNN_Yellow_Orange-1?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain",
+      "https://dks.scene7.com/is/image/GolfGalaxy/140462-100_YELLOWORANGE_TOP?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain",
+      "https://dks.scene7.com/is/image/GolfGalaxy/140462-100_YELLOWORANGE_AR?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain"
     ]
   },
   {
-    "productName": "Soccer Ball",
-    "description": "Nike soccer ball",
-    "price": 7.99,
+    "productName": "Wilson US Open Tournament Tennis Ball 3 Pack",
+    "description": "Easier to hit than a regular tennis ball, this orange tournament ball maximizes capacity for growth and improvement on a variety of tennis strokes",
+    "price": 5.99,
+    "category": "Tennis",
+    "quantity": 10,
+    "images": [
+      "https://dks.scene7.com/is/image/GolfGalaxy/23WILYSTRTRGMBLLSTNN_Orange?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain",
+      "https://dks.scene7.com/is/image/GolfGalaxy/WRT1373_NOCOLOR_FRT?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain",
+      "https://dks.scene7.com/is/image/GolfGalaxy/WRT1373_NOCOLOR_FRTBCK?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain"
+    ]
+  },
+  {
+    "productName": "Nike Academy Soccer Ball",
+    "description": "Aerowsculpt technology uses molded grooves to disrupt airflow across the ball for less drag and more stable flight",
+    "price": 32.0,
+    "category": "Soccer",
+    "quantity": 17,
+    "images": [
+      "https://dks.scene7.com/is/image/GolfGalaxy/24NIKUNKCDMYF24SZSCB_White_Blue_Fury?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain",
+      "https://dks.scene7.com/is/image/GolfGalaxy/FZ2966-101-5_WhiteBlueFury_BCK?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain",
+      "https://images.prodirectsport.com/ProductImages/Main/1019662_Main_1839799.jpg"
+    ]
+  },
+
+  {
+    "productName": "adidas Goletto IX FG/MG Soccer Cleats",
+    "description": "Wilson tennis racket",
+    "price": 49.99,
     "category": "Soccer",
     "quantity": 11,
     "images": [
-    "/public/images/products/soccer/soccer-ball-1.webp",
-    "/public/images/products/soccer/soccer-ball-2.webp",
-    "/public/images/products/soccer/soccer-ball-3.webp"
+      "https://dks.scene7.com/is/image/GolfGalaxy/24ADIAGLTTXFGPRWHCLT_Purple_White?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain",
+      "https://dks.scene7.com/is/image/GolfGalaxy/JI4684_PurpleWhite_SOLE?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain",
+      "https://dks.scene7.com/is/image/GolfGalaxy/JI4684_PurpleWhite_TOP?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain"
     ]
   },
   {
-    "productName": "Golf Club",
-    "description": "Ping golf club",
-    "price": 20.0,
+    "productName": "PING G440 Hybrid",
+    "description": "The G440 hybrids appeal to a variety of skill levels, each engineered to deliver different ball-flight characteristics",
+    "price": 299.0,
     "category": "Golf",
-    "quantity": 15,
+    "quantity": 2,
     "images": [
-    "/public/images/products/golf/golf-club-1.jpeg",
-    "/public/images/products/golf/golf-club-2.jpeg",
-    "/public/images/products/golf/golf-club-3.jpeg"
+      "https://dks.scene7.com/is/image/GolfGalaxy/24PNGMG440HYBLTCBHYB?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain",
+      "https://dks.scene7.com/is/image/GolfGalaxy/40585_NOCOLOR_FACE?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain",
+      "https://dks.scene7.com/is/image/GolfGalaxy/40585_NOCOLOR_ADD?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain"
     ]
   },
   {
-    "productName": "Wilson Tennis Racket",
-    "description": "Wilson tennis racket",
-    "price": 12.5,
-    "category": "Tennis",
-    "quantity": 10,
-    "images": [ 
-    "/public/images/products/tennis/tennis-racket-4.webp",
-    "/public/images/products/tennis/tennis-racket-5.webp",
-    "/public/images/products/tennis/tennis-racket-6.webp"
-    ]
-  },
-  {
-    "productName": "Racket 2",
-    "description": "Wilson tennis racket",
-    "price": 12.5,
-    "category": "Tennis",
-    "quantity": 10,
-    "images": [ 
-    "/public/images/products/tennis/tennis-racket-4.webp",
-    "/public/images/products/tennis/tennis-racket-5.webp",
-    "/public/images/products/tennis/tennis-racket-6.webp"
-    ]
-  },
-  {
-    "productName": "Nike Shoes",
-    "description": "Wilson tennis racket",
-    "price": 12.5,
-    "category": "Tennis",
-    "quantity": 10,
-    "images": [ 
-      
-    "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/beca3db9-a469-4bc1-bbf5-14a846e90db6/AIR+MAX+DN8.png"
+    "productName": "Titleist Players 4 Stand Bag",
+    "description": "High-grade aluminum legs and advanced hinged bottom for best-in-class stability",
+    "price": 225.0,
+    "category": "Golf",
+    "quantity": 7,
+    "images": [
+      "https://dks.scene7.com/is/image/GolfGalaxy/23TTLU2023PLYRS4SBAGA_Eucalyptus?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain",
+      "https://dks.scene7.com/is/image/GolfGalaxy/25PLAYERS4SB_Eucalyptus_TOP?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain",
+      "https://dks.scene7.com/is/image/GolfGalaxy/25PLAYERS4SB_Eucalyptus_AL?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain"
     ]
   }
-
 ]
