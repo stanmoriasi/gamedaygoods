@@ -31,7 +31,7 @@ const Header = () => {
             {Auth.loggedIn() ? (
               <>
                 <Link className="btn btn-info btn-lg mx-2 nav-button" to="/me">
-                  {Auth.getProfile().data.username}'s profile
+                  {Auth.getProfile().data.username}&apos profile
                 </Link>
                 <button
                   className="btn btn-light btn-lg mx-2 nav-button"

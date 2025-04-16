@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./productList.css";
+import React from "react";
 
 interface Product {
   _id: string;
@@ -29,6 +30,7 @@ const ProductList: React.FC<ProductListProps> = ({ products, productName }) => {
   const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
   const [mappedProducts, setMappedProducts] = useState<(Product & { quantityInCart: number })[]>([])
   const storedItems = localStorage.getItem('cart');
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const cart = storedItems ? JSON.parse(storedItems) : [];
 
   useEffect(() => {
@@ -37,13 +39,13 @@ const ProductList: React.FC<ProductListProps> = ({ products, productName }) => {
       return {...prod, quantityInCart: itemInCart?.quantity ? itemInCart?.quantity : 0}
     });
     setMappedProducts(modifiedProducts)
-  }, [products])
+  }, [products, cart])
 
 
 
   // Cart functionality
   const handleAddToCart = (product: Product, cartItems: cartItem[] , numberOfItems: number) => {
-    let itemsToModify = cartItems;
+    const itemsToModify = cartItems;
     const itemToAdd = itemsToModify.findIndex((i: cartItem) => i._id === product._id);
 
     // if(itemToAdd && itemToAdd?.quantity > product.quantity) {

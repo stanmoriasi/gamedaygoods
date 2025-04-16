@@ -14,7 +14,7 @@
     "seed": "cd server && npm run seed",
     "build": "concurrently \"cd server && npm run build\" \"cd client && npm run build\"",
     "render-build": "npm install && npm run build",
-    "lint": "eslint src --ext js,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint \"**/src/**/*.{js,tsx, ts}\" --report-unused-disable-directives --max-warnings 0",
     "eslint": "eslint src"
   },
   "keywords": [],
@@ -22,17 +22,20 @@
   "license": "ISC",
   "devDependencies": {
     "@types/react-slick": "^0.23.13",
-    "concurrently": "^8.2.2",
-    "wait-on": "^7.2.0",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react": "^4.0.3",
+    "concurrently": "^8.2.2",
     "eslint": "^8.45.0",
+    "eslint-plugin-prettier": "^5.2.6",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.3"
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "prettier": "^3.5.3",
+    "wait-on": "^7.2.0"
   },
   "dependencies": {
     "bootstrap": "^5.3.5",
+    "eslint-plugin-react": "^7.37.5",
     "react-bootstrap": "^2.10.9",
     "react-slick": "^0.30.3",
     "slick-carousel": "^1.8.1"

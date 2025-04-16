@@ -1,34 +1,6 @@
-import { useQuery, useMutation, gql } from '@apollo/client';
+
 import { useEffect, useState } from 'react';
 
-const GET_CART = gql`
-  query GetCart {
-    cart {
-      _id
-      products {
-        _id
-        productName
-        price
-        description
-      }
-      total
-      createdAt
-    }
-  }
-`;
-
-const PLACE_ORDER = gql`
-  mutation PlaceOrder($input: [ID!]!) {
-    placeOrder(input: $input) {
-      _id
-      products {
-        _id
-        productName
-      }
-      total
-    }
-  }
-`;
 
 interface cartItem {
   _id: string, 
@@ -39,7 +11,7 @@ interface cartItem {
 }
 
 const CartPage = () => {
-  const [placeOrder] = useMutation(PLACE_ORDER);
+  
   const [total, setTotal] = useState(0);
   const [mappedProducts, setMappedProducts] = useState<cartItem[]>([])
 
@@ -51,7 +23,7 @@ const CartPage = () => {
   }, [])
 
     const handleAddToCart = (product: cartItem, cartItems: cartItem[] , numberOfItems: number) => {
-      let itemsToModify = cartItems;
+      const itemsToModify = cartItems;
       const itemToAdd = itemsToModify.findIndex((i: cartItem) => i._id === product._id);
 
       if(itemToAdd !== -1) {
