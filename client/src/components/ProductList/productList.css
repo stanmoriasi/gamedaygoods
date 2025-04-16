@@ -61,7 +61,6 @@
 
 /* Dropdown styling */
 .form-select {
-  padding: 8px 12px;
   font-size: 1rem;
   border-radius: 6px;
   border: 1px solid #ccc;
@@ -150,7 +149,6 @@
 
 .product-description {
   display: -webkit-box;
-  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   margin-bottom: 1rem;
@@ -160,6 +158,23 @@
   font-family: "Bebas Neue", sans-serif;
   letter-spacing: 1px;
   text-transform: uppercase;
+}
+
+.brand-text:hover {
+  background: none;
+  text-decoration: none;
+  box-shadow: none;
+  cursor: default;
+}
+
+.text-info:hover .brand-text:hover {
+  transform: none !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.product-card:hover .brand-text:hover {
+  transform: none !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Card footer styling */
