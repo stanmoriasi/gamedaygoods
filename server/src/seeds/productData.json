@@ -95,5 +95,53 @@
       "https://dks.scene7.com/is/image/GolfGalaxy/25PLAYERS4SB_Eucalyptus_TOP?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain",
       "https://dks.scene7.com/is/image/GolfGalaxy/25PLAYERS4SB_Eucalyptus_AL?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain"
     ]
+  },
+  {
+    "productName": "Giro Women's Verona Bike Helmet",
+    "description": "Combines sleek style and solid construction to create a lightweight, high performance lid",
+    "price": 49.99,
+    "category": "Cycling",
+    "quantity": 8,
+    "images": [
+      "https://dks.scene7.com/is/image/GolfGalaxy/16GIRWVRNXXXXXXXXDLT_Metallic_Black_Flat_Black?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain",
+      "https://dks.scene7.com/is/image/GolfGalaxy/VERONAHELMET_7147989-MetallicBlackFla_SDEL?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain",
+      "https://i.ytimg.com/vi/kh-BLPO2yE0/maxresdefault.jpg"
+    ]
+  },
+  {
+    "productName": "Nishiki Colorado Sport Mountain Bike",
+    "description": "This mountain bike is built for trail riding with a sturdy alloy frame, mechanical disc brakes, and Kenda tires",
+    "price": 399.99,
+    "category": "Cycling",
+    "quantity": 13,
+    "images": [
+      "https://dks.scene7.com/is/image/GolfGalaxy/22NISWNSHKCLRDSPRPRF_Teal_Black_Black?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain",
+      "https://dks.scene7.com/is/image/GolfGalaxy/NKI24COSPORTL_TealBlackBlack_SDER?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain",
+      "https://dks.scene7.com/is/image/GolfGalaxy/NKI22COSPORTL_TealBlackBlack_DET-alt3?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain"
+    ]
+  },
+  {
+    "productName": "Speedo Hydrospex Swim Goggles",
+    "description": "ade with UV protective lenses, these swim goggles are great for outdoor swimming, both recreationally and competitively",
+    "price": 19.99,
+    "category": "Swimming",
+    "quantity": 4,
+    "images": [
+      "https://dks.scene7.com/is/image/GolfGalaxy/15SDOAHYDRSPXCLSSSWE_Celeste?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain",
+      "https://dks.scene7.com/is/image/GolfGalaxy/87500638331_Celeste_FRT?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain",
+      "https://dks.scene7.com/is/image/GolfGalaxy/87500638331_Celeste_DET-alt1?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain"
+    ]
+  },
+  {
+    "productName": "DBX Floating Throw Cushion",
+    "description": "Whether you’re kayaking, swimming, boating or tubing, this floating cushion is a must-have for safety",
+    "price": 16.99,
+    "category": "Swimming",
+    "quantity": 19,
+    "images": [
+      "https://dks.scene7.com/is/image/GolfGalaxy/18DBXUDBXFLTNGTHRWSR_Blue?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain",
+      "https://dks.scene7.com/is/image/GolfGalaxy/WTB00328_Blue_BCK?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain",
+      "https://dks.scene7.com/is/image/GolfGalaxy/WTB00328_Blue_FRT?qlt=70&wid=1100&hei=1100&fmt=webp&op_sharpen=1&fit=constrain"
+    ]
   }
 ]
