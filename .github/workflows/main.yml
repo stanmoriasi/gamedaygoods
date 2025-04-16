@@ -26,9 +26,13 @@ jobs:
           node-version: 20.x
 
       # Install dependencies
-      - name: 🧰 Install Deps
+      - name:  Install Dependencies
         run: npm install
         
       # Run lint
       - name: Run Lint
         run: npm run lint
+
+      # Run build
+      - name: Run Build
+        run: npm run build
