@@ -35,6 +35,11 @@ interface PlaceOrderArgs {
   };
 }
 
+interface OrderInput {
+  products: string[]; // Array of product IDs
+  total: number; // Total amount for the order
+}
+
 const resolvers = {
   Query: {
     users: async () => {
@@ -111,6 +116,25 @@ const resolvers = {
       const user = await User.create({ ...input });
       const token = signToken(user.username, user.email, user._id);
       return { token, user };
+    },
+
+    addOrder: async (_parent: any, { input }: { input: OrderInput }, context: any) => {
+      if (!context.user) {
+        throw new AuthenticationError('You must be logged in to place an order.');
+      }
+    
+      const newOrder = await Orders.create({
+        user: context.user._id,
+        products: input.products, // assuming input has a 'products' array of product IDs
+        total: input.total,
+      });
+    
+      // Optionally, you can also push the new order to the user's record
+      await User.findByIdAndUpdate(context.user._id, {
+        $push: { orders: newOrder._id },
+      });
+    
+      return newOrder;
     },
 
     login: async (_parent: any, { email, password }: LoginUserArgs) => {

@@ -95,6 +95,7 @@ const typeDefs = `
     removeComment(thoughtId: ID!, commentId: ID!): Thought
     placeOrder(input: [ID!]!): Order
     addProduct(input: ProductInput!): Product
+    addOrder(orderId: ID!, OrderInput!): Order
   }
 `;
 

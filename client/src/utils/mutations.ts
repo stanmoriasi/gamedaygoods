@@ -65,6 +65,8 @@ export const ADD_PRODUCT_TO_ORDER = gql`
         price
       }
       total
+      userId
     }
   }
 `;
+
