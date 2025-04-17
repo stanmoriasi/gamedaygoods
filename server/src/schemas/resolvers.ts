@@ -111,6 +111,21 @@ const resolvers = {
           context.user._id,
           { $addToSet: { orders: savedOrder._id } },
         );
+        for (const item of order.products) {
+          const product = await Product.findById(item.productId);
+          if (!product) {
+            throw new Error(`Product with ID ${item.productId} not found.`);
+          }
+    
+          // Check if there is enough stock
+          if (product.quantity < item.quantity) {
+            throw new Error(`Insufficient stock for product: ${product.productName}`);
+          }
+    
+          // Decrement the product quantity
+          product.quantity -= item.quantity;
+          await product.save();
+        }
 
         return savedOrder;
       } catch (error: unknown) {
