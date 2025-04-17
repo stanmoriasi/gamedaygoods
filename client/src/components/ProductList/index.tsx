@@ -24,7 +24,7 @@ interface ProductListProps {
   productName: string;
 }
 
-const ProductList: React.FC<ProductListProps> = ({ products, productName }) => {
+const ProductList: React.FC<ProductListProps> = ({ products }) => {
   const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
   const [mappedProducts, setMappedProducts] = useState<
     (Product & { quantityInCart: number })[]

@@ -10,6 +10,7 @@ import SingleThought from "./pages/SingleThought";
 import Profile from "./pages/Profile";
 import ErrorPage from "./pages/Error";
 import CartPage from "./pages/CartPage";
+import Checkout from "./pages/Checkout.js";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <CartPage />,
+      },
+      {
+        path: "/checkout",
+        element: <Checkout />,
       },
     ],
   },

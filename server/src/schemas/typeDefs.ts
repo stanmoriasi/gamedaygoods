@@ -36,24 +36,42 @@ const typeDefs = `
   inStock: Boolean!
   }
   
-  type Order {
-    _id: ID!
-    products: [Product!]!
-    total: Float
-    createdAt: String!
+  type Address {
+    street: String!
+    city: String!
+    state: String!
+    zipCode: String!
+    country: String!
   }
 
   type CartItem {
-  _id: ID!
-  name: String!
-  price: Float!
+  productId: ID!
   quantity: Int!
 }
 
-  input OrderInput {
-    products: [ID!]!
-    
+input CartItemInput {
+  productId: ID!
+  quantity: Int!
 }
+  
+  type Order {
+    products: [CartItem!]!
+    address: Address
+    amount: Float!
+  }
+
+  input OrderInput {
+    products: [CartItemInput!]!
+    address: AddressInput
+  }
+
+  input AddressInput {
+    street: String!
+    city: String!
+    state: String!
+    zipCode: String!
+    country: String!
+  }
 
    input ProductInput {
     name: String!
@@ -93,7 +111,7 @@ const typeDefs = `
     addComment(thoughtId: ID!, commentText: String!): Thought
     removeThought(thoughtId: ID!): Thought
     removeComment(thoughtId: ID!, commentId: ID!): Thought
-    placeOrder(input: [ID!]!): Order
+    placeOrder(order: OrderInput!): Order
     addProduct(input: ProductInput!): Product
   }
 `;

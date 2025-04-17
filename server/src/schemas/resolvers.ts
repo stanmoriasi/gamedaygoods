@@ -30,8 +30,15 @@ interface UserArgs {
 }
 
 interface PlaceOrderArgs {
-  input: {
-    products: string[];
+  order: {
+    products: {productId: string, quantity: number}[];
+    address: {
+      street: string
+      city: string
+      state: string
+      zipCode: string
+      country: string
+    }
   };
 }
 
@@ -51,7 +58,7 @@ const resolvers = {
     },
     orders: async (_parent: any, _args: any, context: any) => {
       if (!context.user) throw new AuthenticationError('Not authenticated');
-      return Orders.find({ user: context.user._id }).populate('products');
+      return Orders.find({ userId: context.user._id });
     },
     order: async (_parent: any, { orderId }: OrderArgs, context: any) => {
       if (!context.user) throw new AuthenticationError('Not authenticated');
@@ -63,47 +70,6 @@ const resolvers = {
       }
       throw new AuthenticationError('Could not authenticate user.');
     },
-    cart: async (_parent: any, _args: any, context: any) => {
-      if (!context.user) {
-        throw new AuthenticationError('You must be logged in to view the cart.');
-      }
-    
-      // Try to find existing cart
-      let cart = await Orders.findOne({
-        userId: context.user._id,
-        status: 'cart',
-      }).populate('products.productId');
-    
-      // If no cart, create one
-      if (!cart) {
-        cart = await Orders.create({
-          userId: context.user._id,
-          products: [],
-          amount: 0,
-          address: '',
-          status: 'cart',
-          createdAt: new Date(),
-        });
-        return cart;
-      }
-    
-      // Calculate total from populated products
-      let total = 0;
-      if (cart.products && cart.products.length > 0) {
-        for (const item of cart.products) {
-          const product: any = item.productId;
-          const quantity = item.quantity || 1;
-          if (product && product.price != null) {
-            total += product.price * quantity;
-          }
-        }
-      }
-    
-      // Update cart amount and return
-      cart.amount = total;
-      await cart.save();
-      return cart;
-    }
   },
 
   Mutation: {
@@ -122,28 +88,49 @@ const resolvers = {
       return { token, user };
     },
 
-    placeOrder: async (_parent: any, { input }: PlaceOrderArgs, context: any) => {
+    placeOrder: async (_parent: any, { order }: PlaceOrderArgs, context: any) => {
       if (!context.user) throw new AuthenticationError('You must be logged in to place an order.');
 
-      const products = await Product.find({ _id: { $in: input.products } });
-      const total = products.reduce((sum, product) => sum + product.price, 0);
+      try {
+        if (!order.products || order.products.length === 0) {
+          throw new Error('At least one product is required to place an order.');
+        }
+      
+        const newOrder = new Orders({
+          userId: context.user._id,
+          products: order.products.map((item) => ({
+            productId: item.productId,
+            quantity: item.quantity,
+          })),
+          address: order.address,
+        });
 
-      const order = await Orders.create({
-        user: context.user._id,
-        products: products.map((p) => p._id),
-        amount: total,
-        createdAt: new Date(),
-      });
-      for (const product of products) {
-        product.quantity -= 1; // Decrement the quantity by 1
-        await product.save(); // Save the updated product
+        const savedOrder = await newOrder.save();
+
+        await User.findByIdAndUpdate(
+          context.user._id,
+          { $addToSet: { orders: savedOrder._id } },
+        );
+        for (const item of order.products) {
+          const product = await Product.findById(item.productId);
+          if (!product) {
+            throw new Error(`Product with ID ${item.productId} not found.`);
+          }
+    
+          // Check if there is enough stock
+          if (product.quantity < item.quantity) {
+            throw new Error(`Insufficient stock for product: ${product.productName}`);
+          }
+    
+          // Decrement the product quantity
+          product.quantity -= item.quantity;
+          await product.save();
+        }
+
+        return savedOrder;
+      } catch (error: unknown) {
+        throw new Error(`Failed to place order: ${error}`);
       }
-
-      await User.findByIdAndUpdate(context.user._id, {
-        $addToSet: { orders: order._id },
-      });
-
-      return (await order.populate('products'));
     },
   },
 };

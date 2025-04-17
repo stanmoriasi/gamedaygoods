@@ -55,16 +55,20 @@ export const ADD_COMMENT = gql`
   }
 `;
 
-export const ADD_PRODUCT_TO_ORDER = gql`
-  mutation AddProductToOrder($orderId: ID!, $productId: ID!) {
-    addProductToOrder(orderId: $orderId, productId: $productId) {
-      _id
+export const PLACE_ORDER = gql`
+  mutation PlaceOrder($products: [OrderItemInput!]!, $address: AddressInput) {
+    placeOrder(products: $products, address: $address) {
       products {
-        _id
-        productName
-        price
+        productId
+        quantity
       }
-      total
+      address {
+        street
+        city
+        state
+        zip
+        country
+      }
     }
   }
 `;
