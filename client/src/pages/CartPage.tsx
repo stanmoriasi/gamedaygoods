@@ -1,34 +1,5 @@
-import { useQuery, useMutation, gql } from '@apollo/client';
-import { useEffect, useState } from 'react';
-
-const GET_CART = gql`
-  query GetCart {
-    cart {
-      _id
-      products {
-        _id
-        productName
-        price
-        description
-      }
-      total
-      createdAt
-    }
-  }
-`;
-
-const PLACE_ORDER = gql`
-  mutation PlaceOrder($input: [ID!]!) {
-    placeOrder(input: $input) {
-      _id
-      products {
-        _id
-        productName
-      }
-      total
-    }
-  }
-`;
+import { useEffect, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 interface cartItem {
   _id: string, 
@@ -39,15 +10,16 @@ interface cartItem {
 }
 
 const CartPage = () => {
-  const [placeOrder] = useMutation(PLACE_ORDER);
-  const [total, setTotal] = useState(0);
-  const [mappedProducts, setMappedProducts] = useState<cartItem[]>([])
+  const [mappedProducts, setMappedProducts] = useState<cartItem[]>([]);
+  
+  const total = useMemo(() => {
+    return mappedProducts.reduce((sum: number, item: cartItem) => sum + item.price * item.quantity, 0);
+  }, [mappedProducts]);
 
   useEffect(()=> {
     const storedItems = localStorage.getItem('cart');
     const cart = storedItems ? JSON.parse(storedItems) : [];
     setMappedProducts(cart)
-    setTotal(cart.reduce((sum: number, b: cartItem) => sum + (b.price * b.quantity), 0))
   }, [])
 
     const handleAddToCart = (product: cartItem, cartItems: cartItem[] , numberOfItems: number) => {
@@ -73,18 +45,6 @@ const CartPage = () => {
         })
     };
   
-
-  const handleCheckout = async () => {
-    console.log(mappedProducts)
-    // try {
-    //   await placeOrder({ variables: { input: productIds } });
-    //   alert('Order placed!');
-    // } catch (err) {
-    //   console.error(err);
-    //   alert('Failed to place order.');
-    // }
-  };
-
   return (
     <div className="container">
       <h2>Your Cart</h2>
@@ -161,9 +121,12 @@ const CartPage = () => {
             <div className="d-flex justify-content-end">
             <div>
               <h3>Total: ${total.toFixed(2)}</h3>
-              <button onClick={handleCheckout} className="btn btn-success my-3 px-5">
+              <Link
+                  to="/checkout"
+                  className="btn btn-success my-3 px-5"
+              >
                 Checkout
-              </button>
+              </Link>
             </div>
             </div>
         </>
