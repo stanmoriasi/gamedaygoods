@@ -1,5 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { QUERY_PRODUCT_BY_ID } from "../../utils/queries";
+import "./orderList.css";
 
 // Define interfaces for our data structures
 interface Address {
@@ -61,6 +62,17 @@ const OrderItem: React.FC<OrderItemProps> = ({ order }) => {
             <h4>Order ID: {order._id}</h4>
             <p className="mb-0">Date: {formatDate(order.createdAt)}</p>
           </div>
+          {order.address && (
+            <div className="col-md-4 border-start">
+              <h4>Shipping Address:</h4>
+              <p className="mb-0">{order.address.street}</p>
+              <p className="mb-0">
+                {order.address.city}, {order.address.state}{" "}
+                {order.address.zipCode}
+              </p>
+              <p>{order.address.country}</p>
+            </div>
+          )}
           <div>
             <span
               className={`badge ${
@@ -79,29 +91,24 @@ const OrderItem: React.FC<OrderItemProps> = ({ order }) => {
         </div>
       </div>
       <div className="card-body">
-        <h5>Products:</h5>
-        {order.products.map((item, index: number) => (
-          <ProductDetail
-            key={index}
-            productId={item.productId}
-            quantity={item.quantity}
-          />
-        ))}
-
-        {order.address && (
-          <div className="mt-3">
-            <h5>Shipping Address:</h5>
-            <p className="mb-0">{order.address.street}</p>
-            <p className="mb-0">
-              {order.address.city}, {order.address.state}{" "}
-              {order.address.zipCode}
-            </p>
-            <p>{order.address.country}</p>
+        <div className="row">
+          <div className="col-md-8">
+            <h5>Products:</h5>
+            {order.products.map((item, index: number) => (
+              <ProductDetail
+                key={index}
+                productId={item.productId}
+                quantity={item.quantity}
+              />
+            ))}
           </div>
-        )}
+        </div>
       </div>
+
       <div className="card-footer">
-        <h5 className="text-end">Total: ${order.amount.toFixed(2)}</h5>
+        <h5 className="text-end text-white">
+          Total: ${order.amount.toFixed(2)}
+        </h5>
       </div>
     </div>
   );
