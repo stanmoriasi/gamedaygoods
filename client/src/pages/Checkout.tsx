@@ -88,7 +88,7 @@ const Checkout = () => {
     <div className="container">
       <h2>Checkout</h2>
         <div className="col-12 col-lg-10">
-            <p>Your Order total is ${total}</p>
+            <p>Your Order total is ${total.toFixed(2)}</p>
             <div className="card-body">
                 {data ? (
                 <p>

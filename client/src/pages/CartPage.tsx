@@ -68,7 +68,7 @@ const CartPage = () => {
                   }
                   alt={product.productName}
                   className="img-fluid rounded"
-                  style={{ width: '100px', height: '100px', objectFit: 'cover' }}
+                  style={{ width: '100px', height: '100px', objectFit: 'scale-down' }}
                   />
                 </div>
                 <div>
