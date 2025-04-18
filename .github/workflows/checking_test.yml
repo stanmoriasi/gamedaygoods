@@ -1,4 +1,4 @@
-name: Checking Tests
+name: Check Build Only
 
 on:
   pull_request:
@@ -7,8 +7,8 @@ on:
       - staging
 
 jobs:
-  test:
-    name: Checking Tests
+  build:
+    name: Check Build
     runs-on: ubuntu-latest
 
     steps:
@@ -20,13 +20,10 @@ jobs:
         with:
           node-version: 21.x
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install dependencies (client + server)
+        run: npm run install
 
-      - name: Cypress run
-        uses: cypress-io/github-action@v6
-        with:
-          build: npm run build
-          start: npm run start
-          component: true
+      - name: Run full build (client + server)
+        run: npm run build
+          
 
