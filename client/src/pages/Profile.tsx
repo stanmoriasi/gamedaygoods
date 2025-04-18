@@ -3,7 +3,7 @@ import { useQuery } from "@apollo/client";
 import { QUERY_USER_WITH_ORDERS, QUERY_ME_WITH_ORDERS } from "../utils/queries";
 import OrderList from "../components/OrderList";
 import Auth from "../utils/auth";
-import "./Profile.css"; // You'll need to create this CSS file
+import "./profile.css";
 
 const Profile = () => {
   const { username: userParam } = useParams();
