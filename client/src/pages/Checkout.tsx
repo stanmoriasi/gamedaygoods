@@ -105,7 +105,7 @@ const Checkout = () => {
         {data ? (
           <p className="success-message">
             Order created successfully!{" "}
-            <Link to="/">Back to the homepage.</Link>
+            <Link to="/me">Click here to see your orders!</Link>
           </p>
         ) : (
           <form onSubmit={handleFormSubmit} className="checkout-form">
