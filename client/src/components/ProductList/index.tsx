@@ -209,173 +209,190 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
                     </div>
                   </div>
 
-                 {/* Product Detail Modal */}
-               <>
-               {(() => {
-                const sliderSettings = {
-                  dots: true,
-                  infinite: true,
-                  autoplay: true,
-                  speed: 500,
-                  slidesToShow: 1,
-                  slidesToScroll: 1,
-                  arrows: true,
-                  adaptiveHeight: true,
-                  dotsClass: 'thumbnails',
-                  customPaging: function (i: number) {
-                    return (
-                      <a>
-                        <img
-                          src={
-                            product.images?.[i] ||
-                            "https://cwdaust.com.au/wpress/wp-content/uploads/2015/04/placeholder-store.png"
-                          }
-                          alt={`Thumbnail ${i + 1}`}
-                          className="slick-thumb"
-                        />
-                      </a>
-                    );
-                  },
-                };
-                return (
-                  <div
-                    className={`modal fade ${selectedProduct === product._id ? "show" : ""}`}
-                    id={`productModal-${product._id}`}
-                    tabIndex={-1}
-                    role="dialog"
-                    aria-labelledby={`productModalLabel-${product._id}`}
-                    aria-hidden={selectedProduct !== product._id}
-                    style={{
-                      display: selectedProduct === product._id ? "block" : "none",
-                    }}
-                  >
-                    <div className="modal-dialog modal-dialog-centered">
-                      <div className="modal-content">
-                        <div className="modal-header">
-                          <h5
-                            className="modal-title brand-text"
-                            id={`productModalLabel-${product._id}`}
-                          >
-                            {product.quantity <= 0 ? (
-                              <span className="text-danger">Out of Stock: </span>
-                            ) : null}
-                            {product.productName}
-                          </h5>
-                          <button
-                            type="button"
-                            className="btn-close"
-                            onClick={closeModal}
-                            aria-label="Close"
-                          ></button>
-                        </div>
-                        <div className="modal-body">
-                          <div className="row">
-                            <div className="col-12">
-                              <div className="slider-container">
-                                {product.images && product.images.length > 0 ? (
-                                  <>
-                                    <CustomSlider
-                                      {...sliderSettings}
-                                    >
-                                      {product.images.map((image, index) => (
-                                        <div key={index} className="slider-image-wrapper">
-                                          <img
-                                            src={image}
-                                            alt={`${product.productName} ${index + 1}`}
-                                            className="slider-image"
-                                          />
-                                        </div>
-                                      ))}
-                                    </CustomSlider>
-                                    <div className="slider-nav-buttons" />
-                                  </>
-                                ) : (
-                                  <img
-                                    src="https://cwdaust.com.au/wpress/wp-content/uploads/2015/04/placeholder-store.png"
-                                    alt="No image available"
-                                    className="slider-image"
-                                  />
-                                )}
+                  {/* Product Detail Modal */}
+                  <>
+                    {(() => {
+                      const sliderSettings = {
+                        dots: true,
+                        infinite: true,
+                        autoplay: true,
+                        speed: 500,
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        arrows: true,
+                        adaptiveHeight: true,
+                        dotsClass: "thumbnails",
+                        customPaging: function (i: number) {
+                          return (
+                            <a>
+                              <img
+                                src={
+                                  product.images?.[i] ||
+                                  "https://cwdaust.com.au/wpress/wp-content/uploads/2015/04/placeholder-store.png"
+                                }
+                                alt={`Thumbnail ${i + 1}`}
+                                className="slick-thumb"
+                              />
+                            </a>
+                          );
+                        },
+                      };
+                      return (
+                        <div
+                          className={`modal fade ${
+                            selectedProduct === product._id ? "show" : ""
+                          }`}
+                          id={`productModal-${product._id}`}
+                          tabIndex={-1}
+                          role="dialog"
+                          aria-labelledby={`productModalLabel-${product._id}`}
+                          aria-hidden={selectedProduct !== product._id}
+                          style={{
+                            display:
+                              selectedProduct === product._id
+                                ? "block"
+                                : "none",
+                          }}
+                        >
+                          <div className="modal-dialog modal-dialog-centered">
+                            <div className="modal-content">
+                              <div className="modal-header">
+                                <h5
+                                  className="modal-title brand-text"
+                                  id={`productModalLabel-${product._id}`}
+                                >
+                                  {product.quantity <= 0 ? (
+                                    <span className="text-danger">
+                                      Out of Stock:{" "}
+                                    </span>
+                                  ) : null}
+                                  {product.productName}
+                                </h5>
+                                <button
+                                  type="button"
+                                  className="btn-close"
+                                  onClick={closeModal}
+                                  aria-label="Close"
+                                ></button>
                               </div>
-                            </div>
-                            <div className="col-12">
-                              <div className="product-details">
-                                <p className="mb-2">
-                                  <small className="text-muted">
-                                    Added on{" "}
-                                    {new Date(Number(product.createdAt)).toLocaleDateString()}
-                                  </small>
-                                </p>
-                                <div className="d-flex justify-content-between align-items-center mb-3">
-                                  <span className="price-tag text-info fw-bold">
-                                    ${product.price.toFixed(2)}
-                                  </span>
-                                  <span className="quantity-badge bg-warning text-dark px-2 py-1 rounded">
-                                    {product.quantity} in stock
-                                  </span>
+                              <div className="modal-body">
+                                <div className="row">
+                                  <div className="col-12">
+                                    <div className="slider-container">
+                                      {product.images &&
+                                      product.images.length > 0 ? (
+                                        <>
+                                          <CustomSlider {...sliderSettings}>
+                                            {product.images.map(
+                                              (image, index) => (
+                                                <div
+                                                  key={index}
+                                                  className="slider-image-wrapper"
+                                                >
+                                                  <img
+                                                    src={image}
+                                                    alt={`${
+                                                      product.productName
+                                                    } ${index + 1}`}
+                                                    className="slider-image"
+                                                  />
+                                                </div>
+                                              )
+                                            )}
+                                          </CustomSlider>
+                                          <div className="slider-nav-buttons" />
+                                        </>
+                                      ) : (
+                                        <img
+                                          src="https://cwdaust.com.au/wpress/wp-content/uploads/2015/04/placeholder-store.png"
+                                          alt="No image available"
+                                          className="slider-image"
+                                        />
+                                      )}
+                                    </div>
+                                  </div>
+                                  <div className="col-12">
+                                    <div className="product-details">
+                                      <div className="d-flex justify-content-between align-items-center mb-3">
+                                        <span className="price-tag text-info fw-bold">
+                                          ${product.price.toFixed(2)}
+                                        </span>
+                                        <span className="quantity-badge bg-warning text-dark px-2 py-1 rounded">
+                                          {product.quantity} in stock
+                                        </span>
+                                      </div>
+                                      <p>{product.description}</p>
+                                      <p>
+                                        <strong>Category:</strong>{" "}
+                                        {product.category}
+                                      </p>
+                                    </div>
+                                  </div>
                                 </div>
-                                <p>{product.description}</p>
-                                <p>
-                                  <strong>Category:</strong> {product.category}
-                                </p>
+                              </div>
+                              <div className="modal-footer">
+                                <button
+                                  type="button"
+                                  className="btn btn-secondary"
+                                  onClick={closeModal}
+                                >
+                                  Close
+                                </button>
+                                {product?.quantityInCart > 0 ? (
+                                  <div className="d-flex align-items-center justify-content-center me-3">
+                                    <button
+                                      className="btn btn-outline-success me-2"
+                                      style={{
+                                        color: "green",
+                                        borderColor: "green",
+                                        backgroundColor: "white",
+                                      }}
+                                      onClick={() =>
+                                        handleAddToCart(product, cart, -1)
+                                      }
+                                      disabled={
+                                        product.quantity <= 0 ||
+                                        product.quantityInCart <= 0
+                                      }
+                                    >
+                                      –
+                                    </button>
+                                    <span className="fw-bold text-dark">
+                                      {product.quantityInCart}
+                                    </span>
+                                    <button
+                                      className="btn btn-outline-success ms-2"
+                                      style={{
+                                        color: "green",
+                                        borderColor: "green",
+                                        backgroundColor: "white",
+                                      }}
+                                      onClick={() =>
+                                        handleAddToCart(product, cart, 1)
+                                      }
+                                    >
+                                      +
+                                    </button>
+                                  </div>
+                                ) : (
+                                  <button
+                                    className="btn btn-success flex-grow-1 me-2"
+                                    onClick={() =>
+                                      handleAddToCart(product, cart, 1)
+                                    }
+                                    disabled={product.quantity <= 0}
+                                  >
+                                    Add to Cart
+                                  </button>
+                                )}
                               </div>
                             </div>
                           </div>
                         </div>
-                        <div className="modal-footer">
-                          <button
-                            type="button"
-                            className="btn btn-secondary"
-                            onClick={closeModal}
-                          >
-                            Close
-                          </button>
-                          {product?.quantityInCart > 0 ? (
-                            <div className="d-flex align-items-center justify-content-center me-3">
-                              <button
-                                className="btn btn-outline-success me-2"
-                                style={{
-                                  color: "green",
-                                  borderColor: "green",
-                                  backgroundColor: "white",
-                                }}
-                                onClick={() => handleAddToCart(product, cart, -1)}
-                                disabled={product.quantity <= 0 || product.quantityInCart <= 0}
-                              >
-                                –
-                              </button>
-                              <span className="fw-bold text-dark">
-                                {product.quantityInCart}
-                              </span>
-                              <button
-                                className="btn btn-outline-success ms-2"
-                                style={{
-                                  color: "green",
-                                  borderColor: "green",
-                                  backgroundColor: "white",
-                                }}
-                                onClick={() => handleAddToCart(product, cart, 1)}
-                              >
-                                +
-                              </button>
-                            </div>
-                          ) : (
-                            <button
-                              className="btn btn-success flex-grow-1 me-2"
-                              onClick={() => handleAddToCart(product, cart, 1)}
-                              disabled={product.quantity <= 0}
-                            >
-                              Add to Cart
-                            </button>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-                 })()}
-               </>
-                {/* End Modal */}
+                      );
+                    })()}
+                  </>
+                  {/* End Modal */}
                 </div>
               );
             })}
