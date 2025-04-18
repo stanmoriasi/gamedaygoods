@@ -1,15 +1,15 @@
-import { User } from '../models/index.js';
-import Product from '../models/Product.js';
-import Orders from '../models/Orders.js';
-import { signToken, AuthenticationError } from '../utils/auth.js'; 
+import { User } from "../models/index.js";
+import Product from "../models/Product.js";
+import Orders from "../models/Orders.js";
+import { signToken, AuthenticationError } from "../utils/auth.js";
 
 // Define types for the arguments
 interface AddUserArgs {
-  input:{
+  input: {
     username: string;
     email: string;
     password: string;
-  }
+  };
 }
 
 interface LoginUserArgs {
@@ -21,24 +21,24 @@ interface UserArgs {
   username: string;
 }
 
- interface ProductArgs {
+interface ProductArgs {
   productId: string;
- }
+}
 
- interface OrderArgs {
+interface OrderArgs {
   orderId: string;
 }
 
 interface PlaceOrderArgs {
   order: {
-    products: {productId: string, quantity: number}[];
+    products: { productId: string; quantity: number }[];
     address: {
-      street: string
-      city: string
-      state: string
-      zipCode: string
-      country: string
-    }
+      street: string;
+      city: string;
+      state: string;
+      zipCode: string;
+      country: string;
+    };
   };
 }
 
@@ -57,22 +57,31 @@ const resolvers = {
       return Product.findById(productId);
     },
     orders: async (_parent: any, _args: any, context: any) => {
-      if (!context.user) throw new AuthenticationError('Not authenticated');
+      if (!context.user) throw new AuthenticationError("Not authenticated");
       return Orders.find({ userId: context.user._id });
     },
     order: async (_parent: any, { orderId }: OrderArgs, context: any) => {
-      if (!context.user) throw new AuthenticationError('Not authenticated');
-      return Orders.findOne({ _id: orderId, user: context.user._id }).populate('products');
+      if (!context.user) throw new AuthenticationError("Not authenticated");
+      return Orders.findOne({ _id: orderId, user: context.user._id }).populate(
+        "products"
+      );
     },
     me: async (_parent: any, _args: any, context: any) => {
       if (context.user) {
-        return User.findById(context.user._id).populate('orders');
+        // Try using lean() to get a plain JavaScript object
+        return User.findById(context.user._id)
+          .populate({
+            path: "orders",
+            options: { sort: { createdAt: -1 } }, // Sort by newest first
+          })
+          .lean();
       }
-      throw new AuthenticationError('Could not authenticate user.');
+      throw new AuthenticationError("Could not authenticate user.");
     },
   },
 
   Mutation: {
+    // Rest of your mutations remain unchanged
     addUser: async (_parent: any, { input }: AddUserArgs) => {
       const user = await User.create({ ...input });
       const token = signToken(user.username, user.email, user._id);
@@ -82,20 +91,29 @@ const resolvers = {
     login: async (_parent: any, { email, password }: LoginUserArgs) => {
       const user = await User.findOne({ email });
       if (!user || !(await user.isCorrectPassword(password))) {
-        throw new AuthenticationError('Could not authenticate user.');
+        throw new AuthenticationError("Could not authenticate user.");
       }
       const token = signToken(user.username, user.email, user._id);
       return { token, user };
     },
 
-    placeOrder: async (_parent: any, { order }: PlaceOrderArgs, context: any) => {
-      if (!context.user) throw new AuthenticationError('You must be logged in to place an order.');
+    placeOrder: async (
+      _parent: any,
+      { order }: PlaceOrderArgs,
+      context: any
+    ) => {
+      if (!context.user)
+        throw new AuthenticationError(
+          "You must be logged in to place an order."
+        );
 
       try {
         if (!order.products || order.products.length === 0) {
-          throw new Error('At least one product is required to place an order.');
+          throw new Error(
+            "At least one product is required to place an order."
+          );
         }
-      
+
         const newOrder = new Orders({
           userId: context.user._id,
           products: order.products.map((item) => ({
@@ -107,21 +125,22 @@ const resolvers = {
 
         const savedOrder = await newOrder.save();
 
-        await User.findByIdAndUpdate(
-          context.user._id,
-          { $addToSet: { orders: savedOrder._id } },
-        );
+        await User.findByIdAndUpdate(context.user._id, {
+          $addToSet: { orders: savedOrder._id },
+        });
         for (const item of order.products) {
           const product = await Product.findById(item.productId);
           if (!product) {
             throw new Error(`Product with ID ${item.productId} not found.`);
           }
-    
+
           // Check if there is enough stock
           if (product.quantity < item.quantity) {
-            throw new Error(`Insufficient stock for product: ${product.productName}`);
+            throw new Error(
+              `Insufficient stock for product: ${product.productName}`
+            );
           }
-    
+
           // Decrement the product quantity
           product.quantity -= item.quantity;
           await product.save();

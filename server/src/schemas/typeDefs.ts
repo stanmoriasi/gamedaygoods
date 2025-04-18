@@ -55,10 +55,14 @@ input CartItemInput {
 }
   
   type Order {
-    products: [CartItem!]!
-    address: Address
-    amount: Float!
-  }
+  _id: ID!
+  products: [CartItem!]!
+  address: Address
+  amount: Float!
+  status: String!
+  createdAt: String!
+}
+
 
   input OrderInput {
     products: [CartItemInput!]!

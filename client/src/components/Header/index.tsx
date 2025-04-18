@@ -30,15 +30,15 @@ const Header = () => {
           <div className="col-md-6 d-flex justify-content-md-end">
             {Auth.loggedIn() ? (
               <>
-                <Link className="btn btn-info btn-lg mx-2 nav-button" to="/me">
-                  {Auth.getProfile().data.username}'s profile
-                </Link>
                 <button
-                  className="btn btn-light btn-lg mx-2 nav-button"
+                  className="btn btn-info btn-lg mx-2 nav-button"
                   onClick={logout}
                 >
                   Logout
-                </button>
+                </button>{" "}
+                <Link className="btn btn-light btn-lg mx-2 nav-button" to="/me">
+                  {Auth.getProfile().data.username}'s Orders
+                </Link>
                 <Link
                   to="/cart"
                   className="btn btn-warning btn-lg mx-2 nav-button"

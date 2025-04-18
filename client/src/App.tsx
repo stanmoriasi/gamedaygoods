@@ -5,7 +5,9 @@ import {
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
+  from,
 } from "@apollo/client";
+import { onError } from "@apollo/client/link/error";
 import { setContext } from "@apollo/client/link/context";
 import { Outlet } from "react-router-dom";
 
@@ -17,10 +19,26 @@ const httpLink = createHttpLink({
   uri: "/graphql",
 });
 
+// Create an error handling link
+const errorLink = onError(({ graphQLErrors, networkError }) => {
+  if (graphQLErrors) {
+    graphQLErrors.forEach(({ message, locations, path }) =>
+      console.log(
+        `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
+      )
+    );
+  }
+
+  if (networkError) {
+    console.log(`[Network error]: ${networkError}`);
+  }
+});
+
 // Construct request middleware that will attach the JWT token to every request as an `authorization` header
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
   const token = localStorage.getItem("id_token");
+  console.log("Using auth token:", token ? "Token exists" : "No token");
   // return the headers to the context so httpLink can read them
   return {
     headers: {
@@ -31,8 +49,8 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const client = new ApolloClient({
-  // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
-  link: authLink.concat(httpLink),
+  // Set up our client to execute the error link first, then the authLink, then the httpLink
+  link: from([errorLink, authLink.concat(httpLink)]),
   cache: new InMemoryCache(),
 });
 

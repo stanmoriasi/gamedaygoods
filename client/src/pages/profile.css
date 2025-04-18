@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap");
+
+.profile-container {
+  padding: 2rem 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+.profile-header {
+  margin-bottom: 2rem;
+  border-bottom: 3px solid #17a2b8;
+  padding-bottom: 1rem;
+}
+
+.profile-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2.5rem;
+  letter-spacing: 1px;
+  color: #1a2a3a;
+  margin-bottom: 0.5rem;
+}
+
+.profile-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.section-header {
+  background: linear-gradient(90deg, #1a2a3a 0%, #2d4a6d 100%);
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+}
+
+.section-header h3 {
+  color: white;
+  margin: 0;
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 0.5px;
+  font-size: 1.75rem;
+}
+
+.account-section,
+.orders-section {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.account-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.detail-item {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.75rem;
+  background-color: white;
+  border-radius: 4px;
+  border-left: 4px solid #17a2b8;
+}
+
+.detail-label {
+  font-weight: bold;
+  margin-right: 0.5rem;
+  min-width: 100px;
+}
+
+.detail-value {
+  color: #2d4a6d;
+}
+
+.no-orders-message {
+  text-align: center;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 8px;
+  border: 1px dashed #dee2e6;
+}
+
+.shop-now-btn {
+  margin-top: 1rem;
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+  transition: transform 0.2s ease;
+}
+
+.shop-now-btn:hover {
+  transform: translateY(-2px);
+  background-color: #138496;
+  border-color: #138496;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+}
+
+.loading-text {
+  margin-top: 1rem;
+  color: #6c757d;
+  font-family: "Montserrat", sans-serif;
+}
+
+.auth-alert {
+  border-left: 5px solid #ffc107;
+  border-radius: 4px;
+  margin: 2rem 0;
+}
+
+@media (max-width: 768px) {
+  .profile-container {
+    padding: 1rem;
+  }
+
+  .detail-item {
+    flex-direction: column;
+  }
+
+  .detail-label {
+    margin-bottom: 0.25rem;
+  }
+}

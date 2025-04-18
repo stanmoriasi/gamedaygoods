@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const QUERY_USER = gql`
   query user($username: String!) {
@@ -106,6 +106,74 @@ export const GET_CART = gql`
       total
       status
       createdAt
+    }
+  }
+`;
+
+export const QUERY_USER_WITH_ORDERS = gql`
+  query user($username: String!) {
+    user(username: $username) {
+      _id
+      username
+      email
+      orders {
+        _id
+        products {
+          productId
+          quantity
+        }
+        amount
+        address {
+          street
+          city
+          state
+          zipCode
+          country
+        }
+        status
+        createdAt
+      }
+    }
+  }
+`;
+
+export const QUERY_ME_WITH_ORDERS = gql`
+  query me {
+    me {
+      _id
+      username
+      email
+      orders {
+        _id
+        products {
+          productId
+          quantity
+        }
+        amount
+        address {
+          street
+          city
+          state
+          zipCode
+          country
+        }
+        status
+        createdAt
+      }
+    }
+  }
+`;
+
+export const QUERY_PRODUCT_BY_ID = gql`
+  query getProductById($productId: ID!) {
+    product(productId: $productId) {
+      _id
+      productName
+      description
+      price
+      quantity
+      images
+      category
     }
   }
 `;
