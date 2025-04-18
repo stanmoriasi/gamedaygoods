@@ -1,4 +1,4 @@
-import { useMutation, gql } from "@apollo/client";
+import { useMutation, gql, useApolloClient } from "@apollo/client";
 import { useEffect, useState, type FormEvent, type ChangeEvent } from "react";
 import { Link } from "react-router-dom";
 import "./checkout.css";
@@ -30,6 +30,9 @@ interface cartItem {
 }
 
 const Checkout = () => {
+  // Add this line to get access to the Apollo Client
+  const client = useApolloClient();
+
   const [formState, setFormState] = useState({
     street: "",
     city: "",
@@ -76,6 +79,9 @@ const Checkout = () => {
       });
       if (data) {
         localStorage.removeItem("cart");
+        // Add this line to reset the Apollo cache after order placement
+        await client.resetStore();
+        console.log("Apollo cache reset after order placement");
       }
     } catch (err) {
       console.error(JSON.stringify(err));
