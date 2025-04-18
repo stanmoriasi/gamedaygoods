@@ -93,81 +93,8 @@ const Checkout = () => {
   return (
     <div className="checkout-container">
       <h2>Checkout</h2>
-        <div className="col-12 col-lg-10">
-            <p>Your Order total is ${total.toFixed(2)}</p>
-            <div className="card-body">
-                {data ? (
-                <p>
-                    Order created Successfully{' '}
-                    <Link to="/">back to the homepage.</Link>
-                </p>
-                ) : (
-                <form onSubmit={handleFormSubmit}>
-                    <input
-                      className="form-input"
-                      placeholder="Street"
-                      name="street"
-                      type="text"
-                      required
-                      value={formState.street || ''}
-                      onChange={handleChange}
-                    />
-                    <input
-                      className="form-input"
-                      placeholder="City"
-                      name="city"
-                      type="text"
-                      required
-                      value={formState.city || ''}
-                      onChange={handleChange}
-                    />
-                    <input
-                      className="form-input"
-                      placeholder="State"
-                      name="state"
-                      type="text"
-                      required
-                      value={formState.state || ''}
-                      onChange={handleChange}
-                    />
-                    <input
-                      className="form-input"
-                      placeholder="Zip"
-                      name="zipCode"
-                      type="text"
-                      required
-                      value={formState.zipCode || ''}
-                      onChange={handleChange}
-                    />
-                    <input
-                      className="form-input"
-                      placeholder="Country"
-                      name="country"
-                      type="text"
-                      required
-                      value={formState.country || ''}
-                      onChange={handleChange}
-                    />
-                    <button
-                      className="btn btn-success my-3 px-5"
-                      style={{ cursor: 'pointer' }}
-                      type="submit"
-                    >
-                       Complete Checkout
-                    </button>
-                </form>
-                )}
-    
-                {error && (
-                <div className="my-3 p-3 bg-danger text-white">
-                    {error.message}
-                </div>
-                )}
-            </div>
-            </div>
-        <div className="d-flex justify-content-end">
-        </div>
-      <p className="order-total">Your Order total is ${total}</p>
+
+      <p className="order-total">Your Order total is ${total.toFixed(2)}</p>
       <div className="card-body">
         {data ? (
           <p className="success-message">
