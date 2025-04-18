@@ -199,6 +199,7 @@
 }
 
 /* Modal styling */
+
 .modal {
   position: fixed;
   top: 0;
@@ -206,7 +207,8 @@
   z-index: 1050;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   outline: 0;
 }
 
@@ -233,13 +235,144 @@
   transform: none;
 }
 
+.modal-dialog {
+  max-width: 600px;
+  margin: 1.75rem auto;
+}
+
+.modal-content {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+/* Slider styling */
+.slider-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.slick-slider {
+  display: flex;
+  flex-direction: column;
+}
+
+.slider-image-wrapper {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 300px;
+}
+
+.slider-image {
+  width: 100%; 
+  height: 100%; 
+  object-fit: scale-down;
+}
+
+/* Slick carousel customizations */
+.slick-dots {
+  bottom: -25px;
+}
+
+.thumbnails {
+  all: unset;
+  align-self: center;
+  padding-top: 15px;
+  padding-left: 30%;
+}
+
+.thumbnails > * {
+  all: unset;
+  margin: 5px;
+}
+
+.slick-thumb {
+  width: 50px;
+  height: 50px;
+  object-fit: scale-down;
+}
+
+.slick-dots li button:before {
+  font-size: 8px;
+  color: #007bff;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #0056b3;
+}
+
+.slick-prev,
+.slick-next {
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+}
+
+.slick-prev {
+  left: 5px;
+}
+
+.slick-next {
+  right: 5px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-size: 20px;
+  color: #007bff;
+}
+
+/* Product details styling */
+.product-details {
+  padding: 15px 0;
+}
+
+.price-tag {
+  font-size: 1.25rem;
+}
+
+.quantity-badge {
+  font-size: 0.85rem;
+}
+
 /* Responsive adjustments */
 @media screen and (max-width: 768px) {
-  .product-grid {
-    grid-template-columns: minmax(280px, 1fr);
+  .modal-dialog {
+    max-width: 95%;
+    margin: 1rem auto;
   }
 
-  .product-container {
-    width: 90%;
+  .slider-image-wrapper {
+    height: 100px;
+  }
+
+  .slick-thumb {
+    width: 40px;
+    height: 40px;
+    border-radius: 3px;
+  }
+
+  .slider-nav-buttons .btn {
+    min-width: 70px;
+    font-size: 0.75rem;
+  }
+
+  .product-details {
+    padding: 10px 0;
+  }
+
+  .price-tag {
+    font-size: 1.1rem;
+  }
+
+  .quantity-badge {
+    font-size: 0.75rem;
   }
 }

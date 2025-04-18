@@ -1,5 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./productList.css";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 interface Product {
   _id: string;
@@ -23,7 +26,7 @@ interface ProductListProps {
   product?: Product;
   productName: string;
 }
-
+const CustomSlider: any = Slider;
 const ProductList: React.FC<ProductListProps> = ({ products }) => {
   const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
   const [mappedProducts, setMappedProducts] = useState<
@@ -46,7 +49,7 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
       };
     });
     setMappedProducts(modifiedProducts);
-  }, [products]);
+  }, [products, cart]);
 
   const handleAddToCart = (
     product: Product,
@@ -206,20 +209,44 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
                     </div>
                   </div>
 
-                  {/* Product Detail Modal */}
+                 {/* Product Detail Modal */}
+               <>
+               {(() => {
+                const sliderSettings = {
+                  dots: true,
+                  infinite: true,
+                  autoplay: true,
+                  speed: 500,
+                  slidesToShow: 1,
+                  slidesToScroll: 1,
+                  arrows: true,
+                  adaptiveHeight: true,
+                  dotsClass: 'thumbnails',
+                  customPaging: function (i: number) {
+                    return (
+                      <a>
+                        <img
+                          src={
+                            product.images?.[i] ||
+                            "https://cwdaust.com.au/wpress/wp-content/uploads/2015/04/placeholder-store.png"
+                          }
+                          alt={`Thumbnail ${i + 1}`}
+                          className="slick-thumb"
+                        />
+                      </a>
+                    );
+                  },
+                };
+                return (
                   <div
-                    className={`modal fade ${
-                      selectedProduct === product._id ? "show" : ""
-                    }`}
+                    className={`modal fade ${selectedProduct === product._id ? "show" : ""}`}
                     id={`productModal-${product._id}`}
                     tabIndex={-1}
                     role="dialog"
                     aria-labelledby={`productModalLabel-${product._id}`}
                     aria-hidden={selectedProduct !== product._id}
                     style={{
-                      display:
-                        selectedProduct === product._id ? "block" : "none",
-                      backgroundColor: "rgba(0,0,0,0.5)",
+                      display: selectedProduct === product._id ? "block" : "none",
                     }}
                   >
                     <div className="modal-dialog modal-dialog-centered">
@@ -229,6 +256,9 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
                             className="modal-title brand-text"
                             id={`productModalLabel-${product._id}`}
                           >
+                            {product.quantity <= 0 ? (
+                              <span className="text-danger">Out of Stock: </span>
+                            ) : null}
                             {product.productName}
                           </h5>
                           <button
@@ -240,50 +270,55 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
                         </div>
                         <div className="modal-body">
                           <div className="row">
-                            <div className="col-md-6">
-                              <img
-                                src={
-                                  product.images?.[0]
-                                    ? product.images[0]
-                                    : "https://cwdaust.com.au/wpress/wp-content/uploads/2015/04/placeholder-store.png"
-                                }
-                                alt={product.productName}
-                                className="img-fluid rounded mb-3"
-                              />
-                              <div className="product-thumbnails">
-                                {product.images?.map((image, index) => (
+                            <div className="col-12">
+                              <div className="slider-container">
+                                {product.images && product.images.length > 0 ? (
+                                  <>
+                                    <CustomSlider
+                                      {...sliderSettings}
+                                    >
+                                      {product.images.map((image, index) => (
+                                        <div key={index} className="slider-image-wrapper">
+                                          <img
+                                            src={image}
+                                            alt={`${product.productName} ${index + 1}`}
+                                            className="slider-image"
+                                          />
+                                        </div>
+                                      ))}
+                                    </CustomSlider>
+                                    <div className="slider-nav-buttons" />
+                                  </>
+                                ) : (
                                   <img
-                                    key={index}
-                                    src={image}
-                                    alt={`${product.productName} - view ${
-                                      index + 1
-                                    }`}
-                                    className="thumbnail-image"
+                                    src="https://cwdaust.com.au/wpress/wp-content/uploads/2015/04/placeholder-store.png"
+                                    alt="No image available"
+                                    className="slider-image"
                                   />
-                                ))}
+                                )}
                               </div>
                             </div>
-                            <div className="col-md-6">
-                              <p className="mb-2">
-                                <small className="text-muted">
-                                  Added on{" "}
-                                  {new Date(
-                                    Number(product.createdAt)
-                                  ).toLocaleDateString()}
-                                </small>
-                              </p>
-                              <div className="d-flex justify-content-between align-items-center mb-3">
-                                <span className="price-tag text-info fw-bold">
-                                  ${product.price.toFixed(2)}
-                                </span>
-                                <span className="quantity-badge bg-warning text-dark px-2 py-1 rounded">
-                                  {product.quantity} in stock
-                                </span>
+                            <div className="col-12">
+                              <div className="product-details">
+                                <p className="mb-2">
+                                  <small className="text-muted">
+                                    Added on{" "}
+                                    {new Date(Number(product.createdAt)).toLocaleDateString()}
+                                  </small>
+                                </p>
+                                <div className="d-flex justify-content-between align-items-center mb-3">
+                                  <span className="price-tag text-info fw-bold">
+                                    ${product.price.toFixed(2)}
+                                  </span>
+                                  <span className="quantity-badge bg-warning text-dark px-2 py-1 rounded">
+                                    {product.quantity} in stock
+                                  </span>
+                                </div>
+                                <p>{product.description}</p>
+                                <p>
+                                  <strong>Category:</strong> {product.category}
+                                </p>
                               </div>
-                              <p>{product.description}</p>
-                              <p>
-                                <strong>Category:</strong> {product.category}
-                              </p>
                             </div>
                           </div>
                         </div>
@@ -304,13 +339,8 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
                                   borderColor: "green",
                                   backgroundColor: "white",
                                 }}
-                                onClick={() =>
-                                  handleAddToCart(product, cart, -1)
-                                }
-                                disabled={
-                                  product.quantity <= 0 ||
-                                  product.quantityInCart <= 0
-                                }
+                                onClick={() => handleAddToCart(product, cart, -1)}
+                                disabled={product.quantity <= 0 || product.quantityInCart <= 0}
                               >
                                 –
                               </button>
@@ -324,9 +354,7 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
                                   borderColor: "green",
                                   backgroundColor: "white",
                                 }}
-                                onClick={() =>
-                                  handleAddToCart(product, cart, 1)
-                                }
+                                onClick={() => handleAddToCart(product, cart, 1)}
                               >
                                 +
                               </button>
@@ -335,6 +363,7 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
                             <button
                               className="btn btn-success flex-grow-1 me-2"
                               onClick={() => handleAddToCart(product, cart, 1)}
+                              disabled={product.quantity <= 0}
                             >
                               Add to Cart
                             </button>
@@ -343,7 +372,10 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
                       </div>
                     </div>
                   </div>
-                  {/* End Modal */}
+                );
+                 })()}
+               </>
+                {/* End Modal */}
                 </div>
               );
             })}
