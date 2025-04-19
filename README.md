@@ -10,9 +10,10 @@ Users are able to see the sports gear available in stock, but in order to buy, t
 We've improved our coding skills, because we built a solid React structure. Also, we have learned how to make a responsive and polished User Interface by implementing CSS to our website. In the back-end, we were able to protect sensitive API key information, as well as use queries and mutations for retrieving, adding, updating and deleting data. It's important to say that we were able to successfully communicate between the front-end and the back-end through the GraphQL API, and we applied the JSON Web Tokens
 for a secure user authentication. Finally, we used MongoDB and Mongoose ODM for the database.
 Along with this, we acquired knowledge of team collaboration, because when we were working with the Git version control, we had to resolve 
-some merge conflicts when pulling or pushing up code.
+some merge conflicts when pulling or pushing up code. It's important to say that the following package must be installed in order to render the React components and styles:
+npm install react-slick --save.
 
-Link to the deployed application: 
+Link to the deployed application: https://gamedaygoods.onrender.com/
 
 ## Table of Contents
 
@@ -24,11 +25,33 @@ Link to the deployed application:
 
 ## Usage
 
-![alt text](.png)
+**Main Page**
 
-![alt text](.png)
+![alt text](./assets/images/MainPage.png)
 
-![alt text](.png)
+**Login button**
+
+![alt text](./assets/images/LogIn.png)
+
+**Signup button**
+
+![alt text](./assets/images/SignUp.png)
+
+**User list of orders**
+
+![alt text](./assets/images/UsersOrders.png)
+
+**ViewCart Button**
+
+![alt text](./assets/images/ViewCart.png)
+
+**Checkout**
+
+![alt text](./assets/images/Checkout.png)
+
+**Checkout successfully processed**
+
+![alt text](./assets/images/SuccessfullCheckout.png)
 
 ## Technologies Used
 
