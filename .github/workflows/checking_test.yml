@@ -21,7 +21,7 @@ jobs:
           node-version: 21.x
 
       - name: Install dependencies (client + server)
-        run: npm run install
+        run: npm install
 
       - name: Run full build (client + server)
         run: npm run build
