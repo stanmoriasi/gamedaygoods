@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+.login-container {
+  width: 85%;
+  max-width: 600px;
+  margin: 40px auto;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+.login-container h2 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #343a40;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.login-container .login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login-container .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.login-container .form-group label {
+  font-weight: 600;
+  color: #495057;
+}
+
+.login-container .form-input {
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-container .form-input:focus {
+  outline: none;
+  border-color: #17a2b8;
+  box-shadow: 0 0 0 3px rgba(23, 162, 184, 0.2);
+}
+
+.login-container .btn-success {
+  background-color: #17a2b8;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 20px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.login-container .btn-success:hover {
+  background-color: #138496;
+  transform: translateY(-2px);
+}
+
+.login-container .signup-link {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.login-container .signup-link a {
+  color: #17a2b8;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.login-container .signup-link a:hover {
+  text-decoration: underline;
+}
+
+.login-container .success-message {
+  font-size: 1.1rem;
+  background-color: #d4edda;
+  color: #155724;
+  padding: 15px;
+  border-radius: 6px;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.login-container .error-message {
+  font-size: 1rem;
+  background-color: #dc3545;
+  color: #fff;
+  padding: 15px;
+  border-radius: 6px;
+  margin-top: 15px;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+  .login-container {
+    width: 95%;
+    padding: 20px;
+  }
+}
