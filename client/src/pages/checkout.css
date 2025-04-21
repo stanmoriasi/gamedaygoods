@@ -31,6 +31,13 @@
   gap: 15px;
 }
 
+.form-group {
+  margin-bottom: 15px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
 .form-input {
   padding: 12px 15px;
   border: 1px solid #ccc;
@@ -43,6 +50,19 @@
   outline: none;
   border-color: #17a2b8;
   box-shadow: 0 0 0 3px rgba(23, 162, 184, 0.2);
+}
+
+.input-error {
+  border: 1px solid #ff3860 !important;
+  box-shadow: 0 0 0 2px rgba(255, 56, 96, 0.1);
+}
+
+.error-text {
+  color: #ff3860;
+  font-size: 0.8rem;
+  margin-top: 5px;
+  margin-bottom: 0;
+  font-weight: 500;
 }
 
 .btn-success {
@@ -87,5 +107,9 @@
 
   .btn-success {
     width: 100%;
+  }
+
+  .form-group {
+    margin-bottom: 10px;
   }
 }
