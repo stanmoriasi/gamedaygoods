@@ -59,8 +59,8 @@ const OrderItem: React.FC<OrderItemProps> = ({ order }) => {
       <div className="card-header">
         <div className="d-flex justify-content-between">
           <div>
-            <h4>Order ID: {order._id}</h4>
-            <p className="mb-0">Date: {formatDate(order.createdAt)}</p>
+            <h4>Order ID: {order._id.slice(18)}</h4>
+            <p className="mb-0">Order Date: {formatDate(order.createdAt)}</p>
           </div>
           {order.address && (
             <div className="col-md-4 border-start">

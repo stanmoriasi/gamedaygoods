@@ -49,7 +49,7 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
       };
     });
     setMappedProducts(modifiedProducts);
-  }, [products, cart]);
+  }, [products]);
 
   const handleAddToCart = (
     product: Product,

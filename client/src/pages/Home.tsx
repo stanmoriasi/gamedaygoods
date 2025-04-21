@@ -1,11 +1,17 @@
 import { useQuery } from "@apollo/client";
 import ProductList from "../components/ProductList";
 import { QUERY_PRODUCTS } from "../utils/queries.ts";
+import { useEffect } from "react";
+
 
 const Home = () => {
   const { loading, data } = useQuery(QUERY_PRODUCTS);
   const products = data?.products || [];
-  console.log("🚀 ~ Home ~ data:", data);
+  //console.log("🚀 ~ Home ~ data:", data);
+  useEffect(() => {
+    console.log('updated products:', products);
+  }, [data]);
+
 
   return (
     <main>
