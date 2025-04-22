@@ -7,9 +7,11 @@ The users can see any sport gear they'd like to purchase, which includes basebal
 Users are able to see the sports gear available in stock, but in order to buy, they must either sign-up or log-in first.
 
 We've improved our coding skills, because we built a solid React structure. Also, we have learned how to make a responsive and polished User Interface by implementing CSS to our website. In the back-end, we were able to protect sensitive API key information, as well as use queries and mutations for retrieving, adding, updating and deleting data. It's important to say that we were able to successfully communicate between the front-end and the back-end through the GraphQL API, and we applied the JSON Web Tokens
-for a secure user authentication. Finally, we used MongoDB and Mongoose ODM for the database.
+for a secure user authentication. We used MongoDB and Mongoose ODM for the database.
 Along with this, we acquired knowledge of team collaboration, because when we were working with the Git version control, we had to resolve
-some merge conflicts when pulling or pushing up code.
+some merge conflicts when pulling or pushing up code. It's important to say that when a user is trying to run the program locally,
+the following commands will install all the necessary dependencies: npm run install, and npm run start:dev. Finally, the implemented a GitHub Action, that is able to test if
+our program builds successfully.
 
 Link to the deployed application: https://gamedaygoods.onrender.com/
 
@@ -53,7 +55,7 @@ Link to the deployed application: https://gamedaygoods.onrender.com/
 
 ## Technologies Used
 
-- **Frontend:** React, CSS.
+- **Frontend:** React, CSS, React Slick.
 - **Backend:** Node.js, Express,js.
 - **Database:** MongoDB, Mongoose ODM.
 - **Authentication:** JWT (JSON Web Tokens)
