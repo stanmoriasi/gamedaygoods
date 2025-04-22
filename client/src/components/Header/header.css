@@ -48,3 +48,12 @@
 .nav-button:hover {
   transform: translateY(-2px);
 }
+
+.home-button {
+  transition: transform 0.2s ease;
+  font-weight: 500;
+}
+
+.home-button:hover {
+  transform: translateY(-2px);
+}

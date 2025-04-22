@@ -32,7 +32,7 @@ const Login = () => {
   };
   return (
     <div className="login-container">
-      <h2>Login to Your Account</h2>
+      <h2>Log In to Your Account</h2>
       {data ? (
         <div className="success-message">
           <p>
@@ -68,7 +68,7 @@ const Login = () => {
             />
           </div>
           <button className="btn btn-success" type="submit">
-            Login
+            Log In
           </button>
           <div className="signup-link">
             <p>

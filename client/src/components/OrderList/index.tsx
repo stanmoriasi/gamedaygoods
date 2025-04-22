@@ -105,8 +105,8 @@ const OrderItem: React.FC<OrderItemProps> = ({ order }) => {
         </div>
       </div>
 
-      <div className="card-footer">
-        <h5 className="text-end text-white">
+      <div className="card-footer py-2">
+        <h5 className="text-end text-white mb-0">
           Total: ${order.amount.toFixed(2)}
         </h5>
       </div>
@@ -161,7 +161,7 @@ const OrderList: React.FC<OrderListProps> = ({ orders }) => {
   }
 
   return (
-    <div>
+    <div className="order-list-container">
       {orders.map((order) => (
         <OrderItem key={order._id} order={order} />
       ))}

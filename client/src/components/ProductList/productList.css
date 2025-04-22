@@ -7,7 +7,6 @@
   padding: 20px 0;
 }
 
-/* Grid layout */
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -15,14 +14,12 @@
   width: 100%;
 }
 
-/* Product item styling */
 .product-item {
   width: 100%;
   display: flex;
   flex-direction: column;
 }
 
-/* Card styling */
 .product-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border: none;
@@ -43,7 +40,6 @@
   flex: 1 1 auto;
 }
 
-/* Styling for product filtering */
 .category-filter {
   display: flex;
   justify-content: center;
@@ -59,7 +55,6 @@
   cursor: pointer;
 }
 
-/* Dropdown styling */
 .form-select {
   font-size: 1rem;
   border-radius: 6px;
@@ -80,7 +75,6 @@
   color: #333;
 }
 
-/* Image styling */
 .product-image-container {
   position: relative;
   width: 100%;
@@ -114,7 +108,6 @@
   border: 1px solid #ccc;
 }
 
-/* Thumbnails */
 .product-thumbnails {
   display: flex;
   flex-wrap: wrap;
@@ -136,7 +129,6 @@
   border-color: #17a2b8;
 }
 
-/* Text styling */
 .price-tag {
   font-size: 1.25rem;
   font-weight: bold;
@@ -177,7 +169,6 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
 }
 
-/* Card footer fixes - added to fix white space issue */
 .card-footer {
   background-color: #343a40;
   padding: 10px;
@@ -228,7 +219,6 @@
   justify-content: center;
 }
 
-/* Modal styling */
 .modal {
   position: fixed;
   top: 0;
@@ -278,7 +268,6 @@
   padding: 20px;
 }
 
-/* Slider styling */
 .slider-container {
   width: 100%;
   max-width: 100%;

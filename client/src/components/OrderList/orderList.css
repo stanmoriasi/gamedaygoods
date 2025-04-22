@@ -1,69 +1,68 @@
-.card {
+.order-list-container .card {
   border: 1px solid #ddd;
   border-radius: 8px;
   margin-bottom: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.card-header {
+.order-list-container .card-header {
   background-color: #f8f9fa;
   border-bottom: 1px solid #ddd;
 }
 
-.card-footer {
+.order-list-container .card-footer {
   background-color: #1a2a3a;
   color: white;
   border-top: 1px solid #ddd;
+  padding: 0.5rem 1rem;
+  text-align: right;
+  min-height: auto !important;
+  overflow: hidden;
 }
 
-.order-card {
+.order-list-container .order-card {
   border: 1px solid #ddd;
   border-radius: 8px;
   margin-bottom: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.order-card .card-header {
+.order-list-container .order-card .card-header {
   background-color: #f8f9fa;
   border-bottom: 1px solid #ddd;
 }
 
-.order-card .card-footer {
-  background-color: #1a2a3a;
-  border-top: 1px solid #ddd;
-}
-
-.badge {
+.order-list-container .badge {
   padding: 5px 10px;
   border-radius: 4px;
   font-weight: 500;
 }
 
-.bg-success {
+.order-list-container .bg-success {
   background-color: #28a745;
   color: white;
 }
 
-.bg-info {
+.order-list-container .bg-info {
   background-color: #17a2b8;
   color: white;
 }
 
-.bg-warning {
+.order-list-container .bg-warning {
   background-color: #ffc107;
   color: #212529;
 }
 
-.bg-danger {
+.order-list-container .bg-danger {
   background-color: #dc3545;
   color: white;
 }
 
-.border-start {
+.order-list-container .border-start {
   border-left: 1px solid #dee2e6;
 }
 
-.product-detail {
+.order-list-container .product-detail {
   display: flex;
   align-items: center;
   margin-bottom: 0.75rem;
@@ -71,41 +70,14 @@
   border-bottom: 1px solid #f0f0f0;
 }
 
-.product-detail:last-child {
+.order-list-container .product-detail:last-child {
   border-bottom: none;
 }
 
-.product-image {
+.order-list-container .product-image {
   width: 50px;
   height: 50px;
   object-fit: cover;
   margin-right: 10px;
   border-radius: 4px;
-}
-
-.product-info {
-  flex-grow: 1;
-}
-
-.product-name {
-  font-weight: bold;
-  margin-bottom: 0.25rem;
-}
-
-.product-price {
-  color: #2d4a6d;
-}
-
-.product-description {
-  font-size: 0.85rem;
-  color: #6c757d;
-}
-
-@media (max-width: 767.98px) {
-  .border-start {
-    border-left: none;
-    border-top: 1px solid #dee2e6;
-    padding-top: 1rem;
-    margin-top: 1rem;
-  }
 }
