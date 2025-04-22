@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { type MouseEvent } from "react";
 import Auth from "../../utils/auth";
-import "./header.css"; // Make sure the file name matches your actual CSS file
+import "./header.css";
 
 const Header = () => {
   const logout = (event: MouseEvent<HTMLButtonElement>) => {
@@ -30,12 +30,9 @@ const Header = () => {
           <div className="col-md-6 d-flex justify-content-md-end">
             {Auth.loggedIn() ? (
               <>
-                <button
-                  className="btn btn-info btn-lg mx-2 nav-button"
-                  onClick={logout}
-                >
-                  Logout
-                </button>{" "}
+                <Link className="btn btn-dark btn-lg mx-2 nav-button" to="/">
+                  Home
+                </Link>
                 <Link className="btn btn-light btn-lg mx-2 nav-button" to="/me">
                   {Auth.getProfile().data.username}'s Orders
                 </Link>
@@ -45,20 +42,29 @@ const Header = () => {
                 >
                   View Cart
                 </Link>
+                <button
+                  className="btn btn-info btn-lg mx-2 nav-button"
+                  onClick={logout}
+                >
+                  Log Out
+                </button>
               </>
             ) : (
               <>
+                <Link className="btn btn-dark btn-lg mx-2 nav-button" to="/">
+                  Home
+                </Link>
                 <Link
                   className="btn btn-info btn-lg mx-2 nav-button"
                   to="/login"
                 >
-                  Login
+                  Log In
                 </Link>
                 <Link
                   className="btn btn-light btn-lg mx-2 nav-button"
                   to="/signup"
                 >
-                  Signup
+                  Sign Up
                 </Link>
               </>
             )}
