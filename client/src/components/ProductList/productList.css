@@ -177,10 +177,15 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
 }
 
+/* Card footer fixes - added to fix white space issue */
 .card-footer {
   background-color: #343a40;
   padding: 10px;
   border-top: none;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: 100px;
 }
 
 .card-footer h4 {
@@ -197,8 +202,33 @@
   margin: 0;
 }
 
-/* Modal styling */
+.card-footer .d-flex.justify-content-between {
+  width: 100%;
+  margin-top: auto;
+  align-items: center;
+}
 
+.d-flex.align-items-center.justify-content-center.me-3 {
+  height: 38px;
+  flex: 1;
+}
+
+.card-footer button {
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn.btn-info.text-white.flex-grow-1,
+.btn.btn-success.flex-grow-1.me-2 {
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Modal styling */
 .modal {
   position: fixed;
   top: 0;

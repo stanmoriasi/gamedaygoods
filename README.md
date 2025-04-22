@@ -3,15 +3,15 @@
 ## Description
 
 We built an e-commerce app where users can buy sporting goods.
-The users can see any sport gear they'd like to purchase, which includes baseball, basketball, American football, soccer, tennis, ice-hockey, and much more. 
+The users can see any sport gear they'd like to purchase, which includes baseball, basketball, American football, soccer, tennis, ice-hockey, and much more.
 Users are able to see the sports gear available in stock, but in order to buy, they must either sign-up or log-in first.
-
 
 We've improved our coding skills, because we built a solid React structure. Also, we have learned how to make a responsive and polished User Interface by implementing CSS to our website. In the back-end, we were able to protect sensitive API key information, as well as use queries and mutations for retrieving, adding, updating and deleting data. It's important to say that we were able to successfully communicate between the front-end and the back-end through the GraphQL API, and we applied the JSON Web Tokens
 for a secure user authentication. We used MongoDB and Mongoose ODM for the database.
 Along with this, we acquired knowledge of team collaboration, because when we were working with the Git version control, we had to resolve 
 some merge conflicts when pulling or pushing up code. It's important to say that the following package must be installed in order to render the React components and styles:
 npm install react-slick --save. Finally, we were able to implement a GitHub Action, which is able to test if the project builds successfully.
+
 
 Link to the deployed application: https://gamedaygoods.onrender.com/
 
@@ -68,13 +68,13 @@ Link to the deployed application: https://gamedaygoods.onrender.com/
 
 ## Credits
 
-Cabrera, Jose  https://github.com/JoseMCabreraT
+Cabrera, Jose https://github.com/JoseMCabreraT
 
 Deleon, Shauna https://github.com/pojoto4
 
-Moriasi, Stan  https://github.com/stanmoriasi
+Moriasi, Stan https://github.com/stanmoriasi
 
-Neff, Aeralyn  https://github.com/aaeralynn
+Neff, Aeralyn https://github.com/aaeralynn
 
 ## License
 
